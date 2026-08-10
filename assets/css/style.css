@@ -8,17 +8,29 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
+  max-width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--text);
   background: var(--light);
   line-height: 1.6;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .container {
   width: min(1120px, 92%);
+  max-width: 100%;
   margin: 0 auto;
 }
 .narrow { width: min(820px, 92%); }
@@ -35,11 +47,13 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 18px 0;
+  flex-wrap: wrap;
 }
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
   color: var(--gold);
   font-weight: 700;
   letter-spacing: 1px;
@@ -48,6 +62,7 @@ body {
 .brand-mark {
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 38%;
@@ -120,6 +135,7 @@ h2 {
   gap: 24px;
 }
 .card {
+  min-width: 0;
   background: var(--white);
   border-top: 4px solid var(--gold);
   padding: 28px;
@@ -137,6 +153,7 @@ h2 {
   margin-top: 32px;
 }
 .pillar-card {
+  min-width: 0;
   background: var(--white);
   border-top: 4px solid var(--gold);
   padding: 28px;
@@ -210,6 +227,7 @@ h2 {
   display: flex;
   align-items: flex-start;
   gap: 14px;
+  min-width: 0;
 }
 .proof-icon {
   display: inline-flex;
@@ -250,6 +268,7 @@ h2 {
   margin-top: 36px;
 }
 .principle-card {
+  min-width: 0;
   padding: 22px;
   border: 1px solid rgba(201, 162, 39, 0.3);
   border-radius: 14px;
