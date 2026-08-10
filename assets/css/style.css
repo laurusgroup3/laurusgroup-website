@@ -349,7 +349,7 @@ h2 {
 
 .pillar-showcase-property .showcase-mark { max-width: 280px; }
 .pillar-showcase-automotive .showcase-mark { max-width: 250px; }
-.pillar-showcase-los .showcase-mark { max-width: 165px; }
+.pillar-showcase-los .showcase-mark { max-width: 190px; }
 .pillar-showcase-people .showcase-mark { max-width: 260px; }
 
 /* People has both a status line (like Property) and a linked CTA (like
@@ -558,7 +558,7 @@ h2 {
 .approved-shield {
   display: block;
   width: 100%;
-  max-width: 190px;
+  max-width: 160px;
   margin: 0 auto 24px;
 }
 .approved-shield img {
@@ -687,6 +687,15 @@ h2 {
 
   .hero { padding: 56px 0 60px; }
   .section { padding: 48px 0; }
+
+  /* .section's shorthand above resets top/bottom on any element that also
+     carries one of these classes, silently overriding their intended 40px
+     (equal specificity, later source order wins on shorthand vs longhand). */
+  .engineering-support,
+  .approved-panel {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 @media (max-width: 480px) {
