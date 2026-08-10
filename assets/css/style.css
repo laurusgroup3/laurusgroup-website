@@ -60,13 +60,15 @@ img {
   text-transform: uppercase;
 }
 .brand-mark {
-  width: 32px;
-  height: 32px;
+  /* height-controlled, width: auto so the aspect ratio can never be
+     distorted - clamp() scales it responsively without a competing
+     max-width that would otherwise fight the fixed height. */
+  height: clamp(28px, 8vw, 40px);
+  width: auto;
   flex-shrink: 0;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 38%;
-  flex: 0 0 auto;
+  padding: 4px 12px;
+  background: var(--light);
+  border-radius: 8px;
 }
 nav a {
   color: var(--white);
@@ -182,8 +184,8 @@ h2 {
 }
 .pillar-icon-logo {
   background: transparent;
-  width: 56px;
-  height: 44px;
+  width: 100px;
+  height: 66px;
   border-radius: 0;
 }
 .pillar-icon-logo img {
