@@ -11,9 +11,14 @@
   <header class="site-header">
     <div class="container nav">
       <div class="brand">
-        <img class="brand-mark" src="assets/images/laurus-group-logo-wide.png" alt="Laurus Group" />
+        <img class="brand-mark" src="assets/images/laurus-group-logo-transparent.png" alt="Laurus Group" />
       </div>
-      <nav>
+
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="site-nav">
         <a href="#standard">The Laurus Standard</a>
         <a href="#businesses">Businesses</a>
         <a href="#los">LOS</a>
@@ -50,7 +55,7 @@
           </article>
 
           <article class="pillar-card">
-            <span class="pillar-icon pillar-icon-logo" aria-hidden="true">
+            <span class="pillar-icon" aria-hidden="true">
               <img src="assets/images/Podium Vehicle Solutions Logo-Issue 1.png.png" alt="" />
             </span>
             <p class="pillar-name">Automotive</p>
@@ -62,7 +67,7 @@
           </article>
 
           <article class="pillar-card">
-            <span class="pillar-icon pillar-icon-logo pillar-icon-los" aria-hidden="true">
+            <span class="pillar-icon pillar-icon-los" aria-hidden="true">
               <img src="assets/images/los-logo-mark.png" alt="" />
             </span>
             <p class="pillar-name">Technology</p>
@@ -128,6 +133,7 @@
 
     <section id="los" class="section">
       <div class="container narrow">
+        <span class="los-mark" aria-hidden="true"><img src="assets/images/los-logo-mark.png" alt="" /></span>
         <p class="eyebrow">Technology</p>
         <h2>LOS — The Laurus Operating System</h2>
         <p>
@@ -153,19 +159,22 @@
         </p>
 
         <div class="principles">
-          <div class="principle-card">
+          <div class="principle">
+            <span class="principle-index">01</span>
             <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6l7-3z"></path><path d="M9 12.2l2 2 4-4.6"></path></svg></span>
             <p class="principle-name">Winner's Mindset</p>
             <p class="principle-desc">High-performance thinking applied to everyday business.</p>
           </div>
 
-          <div class="principle-card">
+          <div class="principle">
+            <span class="principle-index">02</span>
             <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l5-6 4 4 7-9"></path><path d="M14 6h6v6"></path></svg></span>
             <p class="principle-name">Continuous Improvement</p>
             <p class="principle-desc">Evidence over assumption. Systems over chaos. Always refining.</p>
           </div>
 
-          <div class="principle-card">
+          <div class="principle">
+            <span class="principle-index">03</span>
             <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"></circle><path d="M12 13l4-4.5"></path><path d="M12 3.5v2"></path></svg></span>
             <p class="principle-name">Minimum Resource. Maximum Useful Performance.</p>
             <p class="principle-desc">Every resource, every hour, working toward real outcomes.</p>
