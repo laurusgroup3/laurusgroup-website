@@ -330,6 +330,24 @@ h2 {
 }
 .showcase-cta:hover { color: var(--gold); }
 
+/* Non-linked status line (Property has no live destination to point to,
+   unlike Podium's external site or LOS's #los section) - same structural
+   position and hairline divider as .showcase-cta, but the label alone
+   carries the gold accent rather than the whole line being a link. */
+.showcase-status {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+.showcase-status-label {
+  color: var(--gold-soft);
+  font-weight: 700;
+}
+
+.pillar-showcase-property .showcase-mark { max-width: 280px; }
 .pillar-showcase-automotive .showcase-mark { max-width: 250px; }
 .pillar-showcase-los .showcase-mark { max-width: 165px; }
 
