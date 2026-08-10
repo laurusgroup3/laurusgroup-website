@@ -52,6 +52,9 @@ img {
   z-index: 20;
   border-bottom: 1px solid rgba(201, 162, 39, 0.25);
 }
+/* .site-header must stay a positioned ancestor even where the mobile
+   override below drops "sticky" back to "relative" - the dropdown nav
+   panel (position: absolute; top: 100%) anchors to this element. */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -95,6 +98,11 @@ nav#site-nav a:hover {
 }
 
 .nav-toggle {
+  /* Neutralise native button chrome - Safari/iOS in particular can render
+     its own default button appearance (a light rounded/pill shape) through
+     custom styles unless appearance is explicitly reset. */
+  appearance: none;
+  -webkit-appearance: none;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -103,9 +111,11 @@ nav#site-nav a:hover {
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   background: transparent;
+  color: inherit;
   cursor: pointer;
 }
 .nav-toggle span {
@@ -481,6 +491,27 @@ h2 {
    RESPONSIVE
 ================================================== */
 @media (max-width: 800px) {
+  /* Stacked mobile header: a 160-180px-wide logo cannot sit balanced next
+     to a 44px toggle in one row, so the logo gets its own centred row and
+     the toggle sits directly beneath it, tightly spaced. The header drops
+     "sticky" for "relative" here - at this size, pinning it permanently
+     would occupy a large share of a phone viewport while scrolling; it
+     still needs to stay a positioned ancestor for the dropdown nav below. */
+  .site-header { position: relative; }
+
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 0 12px;
+    min-height: 0;
+  }
+
+  .brand-mark {
+    width: clamp(155px, 42vw, 190px);
+    height: auto;
+  }
+
   .nav-toggle { display: flex; }
 
   nav#site-nav {
@@ -504,7 +535,6 @@ h2 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.85rem;
   }
-  .site-header { position: sticky; }
 
   .pillars,
   .proof-list,
