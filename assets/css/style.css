@@ -57,7 +57,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  min-height: 64px;
+  min-height: 74px;
 }
 .brand {
   display: flex;
@@ -65,7 +65,11 @@ img {
   min-width: 0;
 }
 .brand-mark {
-  height: clamp(34px, 6vw, 50px);
+  /* height-controlled, width: auto so the aspect ratio can never be
+     distorted. Floor is deliberately generous (42px) so the mark reads
+     with real presence on mobile rather than shrinking to a token icon;
+     ceiling (58px) keeps the header from growing excessively tall. */
+  height: clamp(42px, 9vw, 58px);
   width: auto;
   flex-shrink: 0;
 }
