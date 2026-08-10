@@ -280,6 +280,34 @@ h2 {
   background: var(--navy);
   color: var(--white);
 }
+
+/* Engineering support - complementary capability, not a fourth pillar,
+   so it deliberately uses a plain narrow section rather than the .pillars
+   card grid treatment. */
+.engineering-support {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  border-top: 1px solid rgba(7, 26, 47, 0.08);
+  border-bottom: 1px solid rgba(7, 26, 47, 0.08);
+}
+.engineering-support h2 {
+  font-size: 1.7rem;
+}
+.capability-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.capability-tags span {
+  padding: 8px 14px;
+  border: 1px solid rgba(7, 26, 47, 0.18);
+  border-radius: 999px;
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 blockquote {
   font-size: 1.6rem;
   border-left: 4px solid var(--gold);
