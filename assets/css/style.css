@@ -213,11 +213,12 @@ h2 {
 .pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 30px;
-  /* Automotive is taller than its siblings now (a much larger logo zone) -
-     without this, CSS Grid's default row-stretch would force the Property
-     and LOS cards to grow to match, changing their appearance too. */
+  gap: 16px;
+  margin-top: 24px;
+  /* Automotive/LOS are taller than Property (much larger brand marks) -
+     without this, CSS Grid's default row-stretch would force Property to
+     grow to match, changing its appearance even though its rules are
+     untouched. */
   align-items: start;
 }
 .pillar-card {
@@ -229,51 +230,8 @@ h2 {
   padding: 28px 24px 24px;
 }
 
-/* Automotive / Podium card only - deep navy, larger logo. Property and
-   LOS cards are untouched (they keep the base .pillar-card/.pillar-icon
-   rules above). */
-.pillar-card-automotive {
-  background: var(--navy);
-  border-color: rgba(255, 255, 255, 0.14);
-}
-.pillar-card-automotive .pillar-icon {
-  width: 100%;
-  height: auto;
-  justify-content: flex-start;
-  background: transparent;
-  border: none;
-  padding: 2px 0 20px;
-  margin-bottom: 4px;
-}
-.pillar-card-automotive .pillar-icon img {
-  width: 100%;
-  max-width: 210px;
-  height: auto;
-  padding: 0;
-}
-.pillar-card-automotive .pillar-name {
-  color: var(--gold-soft);
-}
-.pillar-card-automotive .pillar-desc {
-  color: rgba(255, 255, 255, 0.88);
-}
-.pillar-card-automotive .pillar-active {
-  color: rgba(255, 255, 255, 0.68);
-  border-top-color: rgba(255, 255, 255, 0.16);
-}
-.pillar-card-automotive .pillar-active strong {
-  color: rgba(255, 255, 255, 0.9);
-}
-.pillar-card-automotive .pillar-active a {
-  color: var(--gold-soft);
-  font-weight: 800;
-}
-.pillar-card-automotive .pillar-active a:hover {
-  color: var(--gold);
-}
-
-/* Shared icon/logo zone - same box for the Property SVG mark, the Podium
-   logo and the LOS mark, so all three pillars carry equal visual weight. */
+/* Shared icon zone - Property's SVG mark only now (Automotive/LOS moved to
+   the .pillar-showcase treatment below). */
 .pillar-icon {
   display: flex;
   align-items: center;
@@ -294,19 +252,6 @@ h2 {
   stroke-width: 1.7;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-.pillar-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 11px;
-}
-/* LOS mark is an opaque navy square (not a transparent cutout like the
-   Property/Podium marks), so its own corners are softened to sit as a
-   medallion inside the shared light chip rather than a square pasted in. */
-.pillar-icon-los img {
-  padding: 4px;
-  border-radius: 8px;
 }
 
 .pillar-name {
@@ -338,6 +283,55 @@ h2 {
   white-space: nowrap;
 }
 .pillar-active a:hover { color: var(--gold); }
+
+/* ==================================================
+   PILLAR SHOWCASES (Automotive/Podium, Technology/LOS)
+
+   Deliberately not styled as bordered "cards" like Property - these are
+   brand panels: no border box, no shadow, no icon chip. The brand mark is
+   the hero element; gold appears only at the eyebrow and the CTA, nothing
+   else. Automotive and LOS share this base but size their own mark to
+   its own aspect ratio, so the two don't become identical templates.
+================================================== */
+.pillar-showcase {
+  min-width: 0;
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 36px 28px 32px;
+}
+.pillar-showcase .eyebrow {
+  margin: 0 0 20px;
+}
+.showcase-mark {
+  display: block;
+  margin-bottom: 22px;
+}
+.showcase-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.showcase-desc {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+.showcase-cta {
+  display: block;
+  color: var(--gold-soft);
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  transition: color 0.2s ease;
+}
+.showcase-cta:hover { color: var(--gold); }
+
+.pillar-showcase-automotive .showcase-mark { max-width: 250px; }
+.pillar-showcase-los .showcase-mark { max-width: 165px; }
 
 /* ==================================================
    ENGINEERING SOLUTIONS - complementary capability, not a fourth pillar,
