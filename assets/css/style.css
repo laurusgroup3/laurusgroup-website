@@ -37,10 +37,21 @@ body {
   padding: 18px 0;
 }
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--gold);
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  flex: 0 0 auto;
 }
 nav a {
   color: var(--white);
