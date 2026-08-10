@@ -63,10 +63,10 @@ nav a:hover { color: var(--gold); }
   font-size: 0.85rem;
 }
 h1 {
-    font-size: 5.5rem;
+    font-size: clamp(2.4rem, 7vw, 5.5rem);
     line-height: 1.05;
     margin-bottom: 30px;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
     font-weight: 800;
     text-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
 }
@@ -76,7 +76,6 @@ h1 {
     line-height: 1.7;
     color: #d8e2f0;
     margin-bottom: 32px;
-}
 }
 .button {
   display: inline-block;
@@ -95,6 +94,15 @@ h2 {
   font-size: 2.2rem;
   margin-top: 0;
 }
+.dark h2 { color: var(--gold); }
+.section-lead {
+  max-width: 640px;
+  color: #445566;
+  font-size: 1.05rem;
+  margin-top: -8px;
+}
+.dark .section-lead { color: #c7d3e0; }
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -110,11 +118,168 @@ h2 {
 .card h3 { color: var(--navy); margin-top: 0; }
 .card a { color: var(--navy); font-weight: 700; }
 
+/* Pillar cards (Property / Automotive / Technology) */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+.pillar-card {
+  background: var(--white);
+  border-top: 4px solid var(--gold);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(7, 26, 47, 0.08);
+}
+.pillar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: rgba(201, 162, 39, 0.12);
+  color: var(--gold);
+}
+.pillar-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pillar-icon-logo {
+  background: transparent;
+  width: 56px;
+  height: 44px;
+  border-radius: 0;
+}
+.pillar-icon-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.pillar-name {
+  color: var(--navy);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  margin: 0 0 8px;
+}
+.pillar-desc {
+  color: var(--text);
+  margin: 0 0 16px;
+}
+.pillar-active {
+  font-size: 0.9rem;
+  color: #445566;
+  padding-top: 14px;
+  border-top: 1px solid rgba(7, 26, 47, 0.1);
+  margin: 0;
+}
+.pillar-active a {
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Proof-of-model list (Podium) */
+.proof-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 32px 0;
+}
+.proof-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.proof-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: rgba(201, 162, 39, 0.14);
+  color: var(--gold);
+}
+.proof-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.proof-title {
+  color: var(--white);
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.proof-desc {
+  color: #c7d3e0;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* Operating principle cards (The Laurus Standard) */
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+.principle-card {
+  padding: 22px;
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.principle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  background: rgba(201, 162, 39, 0.16);
+  color: var(--gold);
+}
+.principle-icon svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.principle-name {
+  color: var(--white);
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.principle-desc {
+  color: #c7d3e0;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
 .dark {
   background: var(--navy);
   color: var(--white);
 }
-.dark h2 { color: var(--gold); }
 blockquote {
   font-size: 1.6rem;
   border-left: 4px solid var(--gold);
@@ -130,8 +295,18 @@ blockquote {
 .small { color: var(--gold); font-size: 0.85rem; }
 
 @media (max-width: 800px) {
-  .nav { flex-direction: column; gap: 14px; }
+  .nav { flex-direction: column; gap: 14px; padding: 16px 0; }
   nav a { margin: 0 8px; }
-  .cards { grid-template-columns: 1fr; }
-  .hero { padding: 80px 0; }
+  .cards,
+  .pillars,
+  .proof-list,
+  .principles { grid-template-columns: 1fr; }
+  .hero { padding: 64px 0; }
+  .section { padding: 56px 0; }
+}
+
+@media (max-width: 480px) {
+  .hero-text { font-size: 16px; }
+  h2 { font-size: 1.7rem; }
+  blockquote { font-size: 1.25rem; padding-left: 18px; }
 }
