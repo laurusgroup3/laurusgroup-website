@@ -531,6 +531,69 @@ h2 {
 }
 
 /* ==================================================
+   LAURUS APPROVED - premium navy panel, matching the pillar showcases so
+   it visually belongs with Property/Podium/LOS. Stacked (shield above
+   copy) on mobile; side-by-side from 700px up where there's room for it
+   without cramping either element.
+================================================== */
+.approved-panel {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.approved-layout {
+  background: var(--navy);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  text-align: center;
+}
+.approved-shield {
+  display: block;
+  width: 100%;
+  max-width: 190px;
+  margin: 0 auto 24px;
+}
+.approved-shield img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.approved-copy h2 {
+  color: var(--gold-soft);
+  margin: 0;
+}
+.approved-copy h2::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 2px;
+  background: var(--gold);
+  margin: 14px auto 18px;
+}
+.approved-copy p {
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .approved-layout {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+    padding: 40px 44px;
+  }
+  .approved-shield {
+    max-width: 165px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .approved-copy h2::after {
+    margin: 14px 0 18px;
+  }
+}
+
+/* ==================================================
    MISC / FOOTER
 ================================================== */
 .contact a { color: var(--navy); font-weight: 700; }
