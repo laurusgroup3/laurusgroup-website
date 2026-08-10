@@ -215,6 +215,10 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 30px;
+  /* Automotive is taller than its siblings now (a much larger logo zone) -
+     without this, CSS Grid's default row-stretch would force the Property
+     and LOS cards to grow to match, changing their appearance too. */
+  align-items: start;
 }
 .pillar-card {
   min-width: 0;
@@ -223,6 +227,49 @@ h2 {
   border-top: 2px solid var(--gold);
   border-radius: var(--radius);
   padding: 28px 24px 24px;
+}
+
+/* Automotive / Podium card only - deep navy, larger logo. Property and
+   LOS cards are untouched (they keep the base .pillar-card/.pillar-icon
+   rules above). */
+.pillar-card-automotive {
+  background: var(--navy);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.pillar-card-automotive .pillar-icon {
+  width: 100%;
+  height: auto;
+  justify-content: flex-start;
+  background: transparent;
+  border: none;
+  padding: 2px 0 20px;
+  margin-bottom: 4px;
+}
+.pillar-card-automotive .pillar-icon img {
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  padding: 0;
+}
+.pillar-card-automotive .pillar-name {
+  color: var(--gold-soft);
+}
+.pillar-card-automotive .pillar-desc {
+  color: rgba(255, 255, 255, 0.88);
+}
+.pillar-card-automotive .pillar-active {
+  color: rgba(255, 255, 255, 0.68);
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+.pillar-card-automotive .pillar-active strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+.pillar-card-automotive .pillar-active a {
+  color: var(--gold-soft);
+  font-weight: 800;
+}
+.pillar-card-automotive .pillar-active a:hover {
+  color: var(--gold);
 }
 
 /* Shared icon/logo zone - same box for the Property SVG mark, the Podium
