@@ -193,6 +193,13 @@ h2 {
   height: 100%;
   object-fit: contain;
 }
+/* LOS mark crop is closer to square (~1.15:1) than the wide Podium logo
+   (~1.5:1), so it gets its own box sized to that ratio - comparable visual
+   area to the Automotive card's mark, but without letterboxing. */
+.pillar-icon-los {
+  width: 90px;
+  height: 78px;
+}
 .pillar-name {
   color: var(--navy);
   font-weight: 800;
