@@ -352,13 +352,6 @@ h2 {
 .pillar-showcase-los .showcase-mark { max-width: 190px; }
 .pillar-showcase-people .showcase-mark { max-width: 260px; }
 
-/* People has both a status line (like Property) and a linked CTA (like
-   Automotive/LOS) - the status line keeps its divider against the
-   description above it, but the CTA sits directly under it without a
-   second redundant hairline so close to the first. */
-.pillar-showcase-people .showcase-status { margin-bottom: 14px; }
-.pillar-showcase-people .showcase-cta { border-top: none; padding-top: 0; }
-
 /* ==================================================
    ENGINEERING SOLUTIONS - complementary capability, not a fourth pillar,
    so it stays a plain narrow section rather than the .pillars card grid.
