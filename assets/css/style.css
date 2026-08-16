@@ -212,7 +212,7 @@ h2 {
 ================================================== */
 .pillars {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 24px;
   /* Automotive/LOS are taller than Property (much larger brand marks) -
@@ -350,14 +350,19 @@ h2 {
 .pillar-showcase-property .showcase-mark { max-width: 280px; }
 .pillar-showcase-automotive .showcase-mark { max-width: 250px; }
 .pillar-showcase-los .showcase-mark { max-width: 190px; }
+
+/* PRESERVED FOR REACTIVATION - People/Recruitment pillar removed from the
+   public site (2026-08-16). Uncomment alongside the matching <article> in
+   index.html and restore the 4-column .pillars grid to bring it back.
 .pillar-showcase-people .showcase-mark { max-width: 260px; }
 
-/* People has both a status line (like Property) and a linked CTA (like
-   Automotive/LOS) - the status line keeps its divider against the
-   description above it, but the CTA sits directly under it without a
-   second redundant hairline so close to the first. */
+People has both a status line (like Property) and a linked CTA (like
+Automotive/LOS) - the status line keeps its divider against the
+description above it, but the CTA sits directly under it without a
+second redundant hairline so close to the first.
 .pillar-showcase-people .showcase-status { margin-bottom: 14px; }
 .pillar-showcase-people .showcase-cta { border-top: none; padding-top: 0; }
+*/
 
 /* ==================================================
    ENGINEERING SOLUTIONS - complementary capability, not a fourth pillar,
