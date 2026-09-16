@@ -478,6 +478,32 @@ h2 {
   object-fit: cover;
 }
 
+/* Four concise capability areas showing where LOS is being developed -
+   reuses the same column-divided list treatment as .principles/.proof-list
+   below, just on the section's light background instead of dark. */
+.los-capabilities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 28px;
+  margin: 28px 0 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+}
+.los-capability-name {
+  color: var(--navy);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  margin: 0 0 6px;
+}
+.los-capability-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* ==================================================
    THE LAURUS STANDARD - the flagship brand section, so principles are
    presented as an editorial, column-divided list rather than boxed
@@ -690,7 +716,8 @@ h2 {
 
   .pillars,
   .proof-list,
-  .principles { grid-template-columns: 1fr; }
+  .principles,
+  .los-capabilities { grid-template-columns: 1fr; }
 
   .proof-item,
   .principle {
