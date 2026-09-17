@@ -851,6 +851,18 @@ h2 {
   .los-feature-grid,
   .los-business-grid { grid-template-columns: 1fr; }
 
+  /* Connected Operating Model - the horizontal pill flow wraps awkwardly
+     at phone widths (a trailing arrow left dangling at the row break), so
+     mobile gets a plain vertical stack instead. Reuses the same → glyph
+     rotated 90deg rather than swapping in a different character, so
+     there's only one flow to maintain. Tablet/desktop keep the row above
+     this breakpoint untouched. */
+  .los-flow { flex-direction: column; }
+  .los-flow-arrow {
+    display: inline-block;
+    transform: rotate(90deg);
+  }
+
   .proof-item,
   .principle {
     border-left: none;
