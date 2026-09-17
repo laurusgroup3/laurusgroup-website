@@ -351,35 +351,10 @@ h2 {
 .pillar-showcase-automotive .showcase-mark { max-width: 250px; }
 .pillar-showcase-los .showcase-mark { max-width: 190px; }
 
-/* People has a status line (like Property) plus a short capability list
-   and a linked CTA (like Automotive/LOS). The capability list sits between
-   the status line and the CTA, so both dividers stay - unlike the simpler
-   cards, nothing here is directly adjacent enough to look redundant. */
+/* People now follows the same status-then-CTA shape as Property/Automotive/
+   LOS (no separate capability list), so it takes no extra overrides beyond
+   its own mark width. */
 .pillar-showcase-people .showcase-mark { max-width: 260px; }
-.pillar-showcase-people .showcase-status { margin-bottom: 18px; }
-
-.showcase-capabilities {
-  list-style: none;
-  margin: 0 0 22px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.showcase-capabilities li {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.86rem;
-  line-height: 1.5;
-}
-.showcase-capability-label {
-  display: block;
-  color: var(--gold-soft);
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
 
 /* ==================================================
    ENGINEERING SOLUTIONS - complementary capability, not a fourth pillar,
@@ -462,46 +437,202 @@ h2 {
 }
 
 /* ==================================================
-   LOS SECTION
+   LOS SECTION - rebuilt as a scannable mini product page (hero, feature
+   grid, business grid, connected-model flow, proof strip, CTA panel)
+   rather than a stacked-paragraph document. Reuses the same visual
+   language as the rest of the site: white .los-feature-card mirrors
+   .pillar-card, navy .los-business-card mirrors .pillar-showcase, and
+   .los-cta-panel mirrors .approved-layout's embedded navy panel -
+   deliberately not a new full-bleed dark <section>, so it doesn't run
+   two dark sections back-to-back against #standard right after it.
 ================================================== */
-.los-mark {
+.los-hero {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+.los-hero-mark {
   display: block;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 18px;
-  border-radius: 10px;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 12px;
   overflow: hidden;
 }
-.los-mark img {
+.los-hero-mark img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+.los-hero .eyebrow { text-align: center; }
+.los-hero h2 { margin-top: 10px; }
+.los-hero-lead {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 540px;
+  margin: 16px auto 0;
+}
 
-/* Four concise capability areas showing where LOS is being developed -
-   reuses the same column-divided list treatment as .principles/.proof-list
-   below, just on the section's light background instead of dark. */
-.los-capabilities {
+.los-block { margin-top: 56px; }
+.los-block-label {
+  color: var(--navy);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.86rem;
+  margin: 0;
+  text-align: center;
+}
+.los-block-lead {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: center;
+  max-width: 480px;
+  margin: 6px auto 0;
+}
+
+/* "What LOS Connects" - light functional cards, same base as .pillar-card */
+.los-feature-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 22px 28px;
-  margin: 28px 0 30px;
-  padding-top: 24px;
-  border-top: 1px solid var(--hairline);
+  gap: 16px;
+  margin-top: 22px;
 }
-.los-capability-name {
+.los-feature-card {
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-top: 2px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+}
+.los-feature-name {
   color: var(--navy);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 0.8rem;
-  margin: 0 0 6px;
+  font-size: 0.85rem;
+  margin: 0 0 8px;
 }
-.los-capability-desc {
+.los-feature-desc {
   color: var(--text-muted);
   font-size: 0.88rem;
-  line-height: 1.55;
+  line-height: 1.5;
   margin: 0;
+}
+
+/* "LOS Across Laurus" - premium navy cards, same base as .pillar-showcase */
+.los-business-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+.los-business-card {
+  min-width: 0;
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+}
+.los-business-status {
+  display: inline-block;
+  color: var(--navy);
+  background: var(--gold-soft);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-size: 0.68rem;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin: 0 0 12px;
+}
+.los-business-name {
+  color: var(--white);
+  font-weight: 800;
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+.los-business-desc {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Connected operating model - simple pill-and-arrow flow, wraps freely so
+   it never forces horizontal scroll on narrow viewports. */
+.los-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+.los-flow-step {
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 30px;
+  padding: 9px 18px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.los-flow-step-final {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.los-flow-arrow {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.los-flow-note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 520px;
+  margin: 18px auto 0;
+}
+
+/* Real-world use - a bordered callout strip rather than a plain paragraph,
+   so the one fact worth keeping still reads as a distinct, scannable claim. */
+.los-proof-strip {
+  margin: 56px auto 0;
+  padding: 22px 24px;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  max-width: 720px;
+}
+.los-proof-strip p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* CTA panel - embedded navy card, same pattern as .approved-layout. */
+.los-cta-panel {
+  margin: 40px auto 0;
+  max-width: 640px;
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 40px 28px;
+  text-align: center;
+}
+.los-cta-panel h3 {
+  color: var(--gold-soft);
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+}
+.los-cta-panel p {
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 auto 22px;
+  max-width: 420px;
 }
 
 /* ==================================================
@@ -717,7 +848,8 @@ h2 {
   .pillars,
   .proof-list,
   .principles,
-  .los-capabilities { grid-template-columns: 1fr; }
+  .los-feature-grid,
+  .los-business-grid { grid-template-columns: 1fr; }
 
   .proof-item,
   .principle {
