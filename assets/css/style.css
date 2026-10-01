@@ -606,6 +606,73 @@ second redundant hairline so close to the first.
   }
 }
 
+/* Named, approved partner businesses - companies Laurus Group supplies
+   (website, hosting, LOS) who aren't one of Laurus's own pillars above.
+   Sits below the generic shield+statement panel, on the section's own
+   lighter background - each card gets the same navy/gold treatment as
+   a .pillar-showcase so it reads as belonging to the same visual family,
+   without implying the partner IS a Laurus-owned pillar. Add a new
+   .approved-partner-card for each additional approved partner as they
+   come on board - this grid already supports more than one. */
+.approved-partners {
+  margin-top: 28px;
+  display: grid;
+  gap: 20px;
+}
+.approved-partner-card {
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  text-align: center;
+}
+.approved-partner-mark {
+  display: block;
+  margin: 0 auto 18px;
+  max-width: 220px;
+}
+.approved-partner-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.approved-partner-eyebrow {
+  margin: 0 0 6px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.approved-partner-copy h3 {
+  color: var(--white);
+  margin: 0 0 10px;
+}
+.approved-partner-copy p:not(.approved-partner-eyebrow) {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+.approved-partner-copy .showcase-cta {
+  border-top: none;
+  padding-top: 0;
+}
+
+@media (min-width: 700px) {
+  .approved-partner-card {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    text-align: left;
+    padding: 30px 36px;
+  }
+  .approved-partner-mark {
+    max-width: 190px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
+
 /* ==================================================
    MISC / FOOTER
 ================================================== */
