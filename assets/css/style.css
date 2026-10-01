@@ -647,7 +647,14 @@ second redundant hairline so close to the first.
   color: var(--white);
   margin: 0 0 10px;
 }
-.approved-partner-copy p:not(.approved-partner-eyebrow) {
+.approved-partner-tagline {
+  color: var(--gold-soft);
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.2px;
+  margin: 0 0 14px;
+}
+.approved-partner-copy p:not(.approved-partner-eyebrow):not(.approved-partner-tagline) {
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.96rem;
   line-height: 1.6;
