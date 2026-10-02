@@ -9,4 +9,4 @@ Folder structure:
 - assets/images/
 
 Purpose:
-Issue 1 homepage foundation for Laurus Group, linking the three core business areas and setting the Laurus Standard.
+Issue 1 homepage foundation for Laurus Group, linking the five Laurus Group business areas (Property, Automotive, Technology/LOS, People and Engineering Solutions) and setting the Laurus Standard.

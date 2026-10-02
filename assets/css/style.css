@@ -394,8 +394,9 @@ h2 {
 .pillar-showcase-people .showcase-mark { max-width: 260px; }
 
 /* ==================================================
-   ENGINEERING SOLUTIONS - complementary capability, not a fourth pillar,
-   so it stays a plain narrow section rather than the .pillars card grid.
+   ENGINEERING SOLUTIONS - the fifth business area. It has no brand mark
+   yet, so it stays a plain narrow section directly beneath the .pillars
+   card grid rather than an unbalanced fifth card.
 ================================================== */
 .engineering-support {
   padding-top: 40px;
@@ -743,6 +744,17 @@ h2 {
   line-height: 1.6;
 }
 
+/* "LOS Beyond Laurus Group" - reuses the proof-strip callout, without the
+   large top margin since it sits under its own block label. */
+.los-external-strip { margin-top: 22px; }
+.los-external-strip a {
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.los-external-strip a:hover { color: var(--gold); }
+
 /* CTA panel - embedded navy card, same pattern as .approved-layout. */
 .los-cta-panel, .home-cta-panel {
   margin: 40px auto 0;
@@ -923,6 +935,29 @@ h2 {
   color: rgba(255, 255, 255, 0.72);
 }
 .small { color: var(--gold); font-size: 0.78rem; }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.86);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.footer-links a:hover { color: var(--gold-soft); }
+
+/* Six header links need tighter spacing on narrower desktops so they
+   never crowd the logo before the mobile menu takes over at 800px. */
+@media (min-width: 801px) and (max-width: 1100px) {
+  nav#site-nav { gap: 18px; }
+  nav#site-nav a { font-size: 0.72rem; letter-spacing: 0.4px; }
+}
 
 /* ==================================================
    RESPONSIVE
@@ -966,7 +1001,7 @@ h2 {
     border-bottom: 1px solid rgba(201, 162, 39, 0.25);
     transition: max-height 0.25s ease, visibility 0.25s ease;
   }
-  nav#site-nav.is-open { max-height: 320px; visibility: visible; }
+  nav#site-nav.is-open { max-height: 420px; visibility: visible; }
   nav#site-nav a {
     padding: 15px 6%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
