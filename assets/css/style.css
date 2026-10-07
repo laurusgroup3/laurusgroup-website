@@ -505,6 +505,61 @@ h2 {
    its own mark width. */
 .pillar-showcase-people .showcase-mark { max-width: 260px; }
 
+/* Automotive only: Podium's own engine-bay diagnostics photograph (the
+   same image as podiumvehiclesolutions.co.uk's hero, copied as-is from
+   that site's web derivatives) sits behind the card under a strong navy
+   overlay, so it reads as texture and the gold Podium mark stays the
+   focal point. The overlay is heaviest at the top (eyebrow + logo) and
+   never drops below 0.8 navy behind the text. Each crop is anchored on
+   the diagnostic tablet, which lands in the lower right of the card. */
+.pillar-showcase-automotive {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg,
+      rgba(7, 26, 47, 0.95) 0%,
+      rgba(7, 26, 47, 0.9) 42%,
+      rgba(7, 26, 47, 0.8) 72%,
+      rgba(7, 26, 47, 0.9) 100%),
+    url("../images/podium-diagnostics-card.webp") 85% 100% / cover no-repeat,
+    var(--navy);
+}
+/* Very faint gold light on the tablet's screen, breathing on the same
+   slow 8s rhythm as the hero's LOS tree glow. */
+.pillar-showcase-automotive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 42% 30% at 74% 76%, rgba(201, 162, 39, 0.16), transparent 70%);
+  opacity: 0.55;
+  animation: podium-card-glow 8s ease-in-out infinite;
+}
+@keyframes podium-card-glow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+@media (max-width: 600px) {
+  .pillar-showcase-automotive {
+    background:
+      linear-gradient(180deg,
+        rgba(7, 26, 47, 0.95) 0%,
+        rgba(7, 26, 47, 0.92) 42%,
+        rgba(7, 26, 47, 0.86) 72%,
+        rgba(7, 26, 47, 0.9) 100%),
+      url("../images/podium-diagnostics-card-mobile.webp") 70% 100% / cover no-repeat,
+      var(--navy);
+  }
+  .pillar-showcase-automotive::before {
+    background: radial-gradient(ellipse 55% 26% at 55% 72%, rgba(201, 162, 39, 0.16), transparent 70%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillar-showcase-automotive::before { animation: none; opacity: 0.75; }
+}
+
 /* ==================================================
    ENGINEERING SOLUTIONS - the fifth business area. It has no brand mark
    yet, so it stays a plain narrow section directly beneath the .pillars
