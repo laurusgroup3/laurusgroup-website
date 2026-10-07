@@ -640,6 +640,49 @@ h2 {
   .pillar-showcase-property .showcase-mark::after { animation: none; display: none; }
 }
 
+/* People / Laurus Recruitment only: a consultant and candidate in a
+   relaxed one-to-one conversation (an AI-generated photo, no real
+   people; pre-darkened copies in assets/images) behind a strong navy
+   overlay - heaviest behind the eyebrow and logo, never below 0.84
+   behind the text - so it reads as warmth and depth, not a picture.
+   Separate desktop and mobile crops, both framed on the two people. */
+.pillar-showcase-people {
+  background:
+    linear-gradient(180deg,
+      rgba(7, 26, 47, 0.95) 0%,
+      rgba(7, 26, 47, 0.93) 45%,
+      rgba(7, 26, 47, 0.84) 72%,
+      rgba(7, 26, 47, 0.9) 100%),
+    url("../images/people-conversation-card.webp") 50% 40% / cover no-repeat,
+    var(--navy);
+}
+.pillar-showcase-people {
+  isolation: isolate;
+}
+.pillar-showcase-people .showcase-mark {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* The logo file carries its own soft dark-navy backing, which would
+   show as a box over the photo. "lighten" keeps whichever is lighter -
+   the gold/white lettering always wins, the darker-than-navy backing
+   never does - so the mark sits cleanly on the card. */
+.pillar-showcase-people .showcase-mark img {
+  mix-blend-mode: lighten;
+}
+@media (max-width: 600px) {
+  .pillar-showcase-people {
+    background:
+      linear-gradient(180deg,
+        rgba(7, 26, 47, 0.95) 0%,
+        rgba(7, 26, 47, 0.93) 45%,
+        rgba(7, 26, 47, 0.84) 72%,
+        rgba(7, 26, 47, 0.9) 100%),
+      url("../images/people-conversation-card-mobile.webp") 50% 40% / cover no-repeat,
+      var(--navy);
+  }
+}
+
 /* Once the cards stack into one column, the LOS mark sits centred in
    its card. Wider layouts keep it left-aligned like the other marks in
    its row. */
