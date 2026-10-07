@@ -578,6 +578,111 @@ h2 {
     filter: drop-shadow(0 0 16px rgba(243, 220, 149, 0.38));
   }
 }
+/* Property / Laurus Trade Quotes only: an original front elevation of a
+   modern home, drawn as blueprint linework (grid bubbles, dimension
+   chains, level datums, faintly lit glazing) over a fine drawing-board
+   grid. Kept very faint on the navy and faded out above the logo, so
+   the Laurus Trade Quotes mark stays centred and dominant. Related to
+   the Automotive card's dark, warm-lit treatment, but architectural
+   rather than photographic. */
+.pillar-showcase-property {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.pillar-showcase-property::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url("../images/property-elevation.svg") 50% 100% / 108% auto no-repeat,
+    linear-gradient(rgba(214, 228, 245, 0.16) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgba(214, 228, 245, 0.16) 1px, transparent 1px) 0 0 / 32px 32px;
+  opacity: 0.11;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 36%, #000 70%);
+  mask-image: linear-gradient(to bottom, transparent 36%, #000 70%);
+}
+.pillar-showcase-property .showcase-mark {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* A faint light passing across the logo's gold only (the mask is the
+   logo's gold detail, without the white lettering), once every 12s.
+   Deliberately quieter than the LOS glow: no halo, no pulse. */
+.pillar-showcase-property .showcase-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 240, 200, 0.9) 50%, transparent 58%) 120% 0 / 300% 100% no-repeat;
+  -webkit-mask: url("../images/laurus-trade-quotes-logo-gold-mask.png") center / contain no-repeat;
+  mask: url("../images/laurus-trade-quotes-logo-gold-mask.png") center / contain no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: tq-shimmer 12s ease-in-out infinite;
+}
+@keyframes tq-shimmer {
+  0%        { opacity: 0;    background-position: 120% 0; }
+  4%        { opacity: 0.3; }
+  18%       { opacity: 0.3; }
+  22%, 100% { opacity: 0;    background-position: -20% 0; }
+}
+@media (max-width: 600px) {
+  .pillar-showcase-property::before {
+    background-position: 46% 100%, 0 0, 0 0;
+    background-size: 175% auto, 32px 32px, 32px 32px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillar-showcase-property .showcase-mark::after { animation: none; display: none; }
+}
+
+/* People / Laurus Recruitment only: a consultant and candidate in a
+   relaxed one-to-one conversation (an AI-generated photo, no real
+   people; pre-darkened copies in assets/images) behind a strong navy
+   overlay - heaviest behind the eyebrow and logo, never below 0.84
+   behind the text - so it reads as warmth and depth, not a picture.
+   Separate desktop and mobile crops, both framed on the two people. */
+.pillar-showcase-people {
+  background:
+    linear-gradient(180deg,
+      rgba(7, 26, 47, 0.95) 0%,
+      rgba(7, 26, 47, 0.93) 45%,
+      rgba(7, 26, 47, 0.84) 72%,
+      rgba(7, 26, 47, 0.9) 100%),
+    url("../images/people-conversation-card.webp") 50% 40% / cover no-repeat,
+    var(--navy);
+}
+.pillar-showcase-people {
+  isolation: isolate;
+}
+.pillar-showcase-people .showcase-mark {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* The logo file carries its own soft dark-navy backing, which would
+   show as a box over the photo. "lighten" keeps whichever is lighter -
+   the gold/white lettering always wins, the darker-than-navy backing
+   never does - so the mark sits cleanly on the card. */
+.pillar-showcase-people .showcase-mark img {
+  mix-blend-mode: lighten;
+}
+@media (max-width: 600px) {
+  .pillar-showcase-people {
+    background:
+      linear-gradient(180deg,
+        rgba(7, 26, 47, 0.95) 0%,
+        rgba(7, 26, 47, 0.93) 45%,
+        rgba(7, 26, 47, 0.84) 72%,
+        rgba(7, 26, 47, 0.9) 100%),
+      url("../images/people-conversation-card-mobile.webp") 50% 40% / cover no-repeat,
+      var(--navy);
+  }
+}
+
 /* Once the cards stack into one column, the LOS mark sits centred in
    its card. Wider layouts keep it left-aligned like the other marks in
    its row. */
