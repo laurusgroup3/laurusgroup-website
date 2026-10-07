@@ -145,9 +145,9 @@ nav#site-nav a:hover {
 }
 /* Faint LOS tree: a large, low-opacity brand mark set into the right of
    the hero, fading out towards the text so it never competes with it.
-   Decorative only (a CSS background, so no alt text or tab stop). */
-.hero::before {
-  content: "";
+   Decorative only (aria-hidden, no tab stop). The container carries the
+   placement and the edge fades; ::before is the faint mark itself. */
+.hero-tree {
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -155,9 +155,6 @@ nav#site-nav a:hover {
   width: min(560px, 46vw);
   aspect-ratio: 500 / 456;
   transform: translateY(-50%);
-  background: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
-  opacity: 0.12;
-  filter: drop-shadow(0 0 38px rgba(201, 162, 39, 0.35));
   /* Fades in from the left (towards the text) and out at the base, so
      the mark has no hard edges. */
   -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%), linear-gradient(to bottom, #000 72%, transparent 100%);
@@ -166,8 +163,88 @@ nav#site-nav a:hover {
   mask-composite: intersect;
   pointer-events: none;
 }
+.hero-tree::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 38px rgba(201, 162, 39, 0.35));
+}
 @media (max-width: 1100px) {
-  .hero::before { width: min(460px, 44vw); }
+  .hero-tree { width: min(460px, 44vw); }
+}
+
+/* "System coming alive": soft warm light that appears only on the
+   tree's own lines (each layer is masked by the mark's transparency),
+   rising from the roots up the trunk, then into the left branches, the
+   right branches and the crown, ending with a faint pulse on the LOS
+   lettering. One 8s cycle shared by every layer keeps the sequence in
+   step; peaks stay low so the tree remains faint behind the text. */
+@property --rise {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 96%;
+}
+.hero-tree-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  mix-blend-mode: screen;
+  -webkit-mask: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
+  mask: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
+  animation: 8s ease-in-out infinite;
+  will-change: opacity;
+}
+.glow-trunk {
+  background: radial-gradient(ellipse 15% 20% at 50% var(--rise), rgba(255, 214, 120, 0.95), transparent 72%);
+  animation-name: hero-tree-trunk;
+}
+.glow-left {
+  background: radial-gradient(ellipse 24% 24% at 30% 37%, rgba(255, 214, 120, 0.9), transparent 72%);
+  animation-name: hero-tree-left;
+}
+.glow-right {
+  background: radial-gradient(ellipse 24% 24% at 70% 35%, rgba(255, 214, 120, 0.9), transparent 72%);
+  animation-name: hero-tree-right;
+}
+.glow-crown {
+  background: radial-gradient(ellipse 24% 18% at 50% 15%, rgba(255, 214, 120, 0.9), transparent 72%);
+  animation-name: hero-tree-crown;
+}
+.glow-letters {
+  background: radial-gradient(ellipse 30% 13% at 50% 71%, rgba(255, 214, 120, 0.85), transparent 75%);
+  animation-name: hero-tree-letters;
+}
+@keyframes hero-tree-trunk {
+  0%   { opacity: 0;    --rise: 96%; }
+  8%   { opacity: 0.30; }
+  30%  { opacity: 0.30; --rise: 44%; }
+  42%  { opacity: 0;    --rise: 40%; }
+  100% { opacity: 0;    --rise: 40%; }
+}
+@keyframes hero-tree-left {
+  0%, 24%   { opacity: 0; }
+  38%       { opacity: 0.24; }
+  52%, 100% { opacity: 0; }
+}
+@keyframes hero-tree-right {
+  0%, 30%   { opacity: 0; }
+  44%       { opacity: 0.24; }
+  58%, 100% { opacity: 0; }
+}
+@keyframes hero-tree-crown {
+  0%, 38%   { opacity: 0; }
+  54%       { opacity: 0.22; }
+  68%, 100% { opacity: 0; }
+}
+@keyframes hero-tree-letters {
+  0%, 62%   { opacity: 0; }
+  74%       { opacity: 0.16; }
+  86%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-tree-glow { animation: none; opacity: 0; }
 }
 .hero .container { position: relative; }
 .hero-content { max-width: 640px; }
@@ -1082,18 +1159,18 @@ h2 {
   .hero { padding: 44px 0 52px; }
   /* Phones: the tree sits lower-right, partly off-canvas and fainter, so
      the left-aligned text stays fully readable over it. */
-  .hero::before {
+  .hero-tree {
     top: auto;
     bottom: -40px;
     right: -70px;
     width: 300px;
     transform: none;
-    opacity: 0.10;
     -webkit-mask-image: linear-gradient(to bottom right, transparent 10%, #000 55%);
     -webkit-mask-composite: source-over;
     mask-image: linear-gradient(to bottom right, transparent 10%, #000 55%);
     mask-composite: add;
   }
+  .hero-tree::before { opacity: 0.10; }
   .section { padding: 48px 0; }
 
   /* .section's shorthand above resets top/bottom on any element that also
