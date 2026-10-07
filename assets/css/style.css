@@ -59,8 +59,8 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-  min-height: 74px;
+  padding: 12px 0;
+  min-height: 88px;
 }
 .brand {
   display: flex;
@@ -69,10 +69,9 @@ img {
 }
 .brand-mark {
   /* height-controlled, width: auto so the aspect ratio can never be
-     distorted. Floor is deliberately generous (42px) so the mark reads
-     with real presence on mobile rather than shrinking to a token icon;
-     ceiling (58px) keeps the header from growing excessively tall. */
-  height: clamp(42px, 9vw, 58px);
+     distorted. Sized for a confident brand presence at desktop (up to
+     74px tall) while staying balanced against the nav links. */
+  height: clamp(48px, 6vw, 74px);
   width: auto;
   flex-shrink: 0;
 }
@@ -134,11 +133,44 @@ nav#site-nav a:hover {
    HERO
 ================================================== */
 .hero {
-  background: linear-gradient(rgba(7,26,47,0.86), rgba(7,26,47,0.86)), radial-gradient(circle at top right, #26476a, var(--navy));
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 55% 75% at 78% 45%, rgba(201, 162, 39, 0.10), transparent 70%),
+    linear-gradient(rgba(7,26,47,0.86), rgba(7,26,47,0.86)),
+    radial-gradient(circle at top right, #26476a, var(--navy));
   color: var(--white);
-  padding: 96px 0 100px;
+  padding: 72px 0 80px;
 }
-.hero-content { max-width: 760px; }
+/* Faint LOS tree: a large, low-opacity brand mark set into the right of
+   the hero, fading out towards the text so it never competes with it.
+   Decorative only (a CSS background, so no alt text or tab stop). */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: max(-40px, calc((100vw - 1160px) / 2 - 60px));
+  width: min(560px, 46vw);
+  aspect-ratio: 500 / 456;
+  transform: translateY(-50%);
+  background: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 38px rgba(201, 162, 39, 0.35));
+  /* Fades in from the left (towards the text) and out at the base, so
+     the mark has no hard edges. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%), linear-gradient(to bottom, #000 72%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, #000 38%), linear-gradient(to bottom, #000 72%, transparent 100%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+@media (max-width: 1100px) {
+  .hero::before { width: min(460px, 44vw); }
+}
+.hero .container { position: relative; }
+.hero-content { max-width: 640px; }
 .eyebrow {
   color: var(--gold);
   text-transform: uppercase;
@@ -1047,7 +1079,21 @@ h2 {
   .proof-list,
   .principles { border-top: none; }
 
-  .hero { padding: 56px 0 60px; }
+  .hero { padding: 44px 0 52px; }
+  /* Phones: the tree sits lower-right, partly off-canvas and fainter, so
+     the left-aligned text stays fully readable over it. */
+  .hero::before {
+    top: auto;
+    bottom: -40px;
+    right: -70px;
+    width: 300px;
+    transform: none;
+    opacity: 0.10;
+    -webkit-mask-image: linear-gradient(to bottom right, transparent 10%, #000 55%);
+    -webkit-mask-composite: source-over;
+    mask-image: linear-gradient(to bottom right, transparent 10%, #000 55%);
+    mask-composite: add;
+  }
   .section { padding: 48px 0; }
 
   /* .section's shorthand above resets top/bottom on any element that also
