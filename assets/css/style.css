@@ -600,9 +600,30 @@ h2 {
     url("../images/property-elevation.svg") 50% 100% / 108% auto no-repeat,
     linear-gradient(rgba(214, 228, 245, 0.16) 1px, transparent 1px) 0 0 / 32px 32px,
     linear-gradient(90deg, rgba(214, 228, 245, 0.16) 1px, transparent 1px) 0 0 / 32px 32px;
-  opacity: 0.11;
+  opacity: 0.15;
   -webkit-mask-image: linear-gradient(to bottom, transparent 36%, #000 70%);
   mask-image: linear-gradient(to bottom, transparent 36%, #000 70%);
+}
+/* Navy scrim over the drawing, behind the copy (description, status and
+   links): darkest across the text block, fading out towards the card's
+   side edges and bottom strip so the linework keeps its character
+   there. Painted after ::before at the same z-index, so it sits above
+   the drawing and below the content. */
+.pillar-showcase-property::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(7, 26, 47, 0.78);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 40%, #000 54%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 40%, #000 54%, #000 88%, transparent 100%);
+  mask-composite: intersect;
 }
 .pillar-showcase-property .showcase-mark {
   position: relative;
