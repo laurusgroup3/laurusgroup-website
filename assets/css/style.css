@@ -560,6 +560,34 @@ h2 {
   .pillar-showcase-automotive::before { animation: none; opacity: 0.75; }
 }
 
+/* Technology / LOS only: the same soft gold glow and slow ambient pulse
+   as the approved LOS mark on los.laurusgroup.co.uk (same light colour
+   and 5.5s rhythm), scaled down for this smaller mark. The drop-shadow
+   follows the mark's own transparency, so only the tree lights up. */
+.pillar-showcase-los .showcase-mark img {
+  filter: drop-shadow(0 0 12px rgba(243, 220, 149, 0.3));
+  animation: los-card-glow 5.5s ease-in-out infinite;
+}
+@keyframes los-card-glow {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 12px rgba(243, 220, 149, 0.3)); }
+  50%      { filter: brightness(1.04) drop-shadow(0 0 20px rgba(243, 220, 149, 0.45)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillar-showcase-los .showcase-mark img {
+    animation: none;
+    filter: drop-shadow(0 0 16px rgba(243, 220, 149, 0.38));
+  }
+}
+/* Once the cards stack into one column, the LOS mark sits centred in
+   its card. Wider layouts keep it left-aligned like the other marks in
+   its row. */
+@media (max-width: 600px) {
+  .pillar-showcase-los .showcase-mark {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* ==================================================
    ENGINEERING SOLUTIONS - the fifth business area. It has no brand mark
    yet, so it stays a plain narrow section directly beneath the .pillars
