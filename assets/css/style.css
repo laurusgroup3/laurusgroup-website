@@ -1386,3 +1386,20 @@ h2 {
   .hero-text { font-size: 16px; }
   h2 { font-size: 1.55rem; }
 }
+
+
+/* ==================================================
+   TEMPORARY: Property / Laurus Trade Quotes hidden from the public site.
+   Three business cards and three LOS examples remain, so rebalance:
+   desktop 3 across; tablet 2 + 1 full-width; phone 1 column (existing rule).
+   Revert this block together with the index.html change to restore.
+================================================== */
+@media (min-width: 1000px) {
+  .pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 601px) and (max-width: 999px) {
+  .pillars > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (min-width: 801px) {
+  .los-business-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
