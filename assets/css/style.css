@@ -384,14 +384,33 @@ h2 {
   font-weight: 700;
 }
 
-.pillar-showcase-property .showcase-mark { max-width: 280px; }
 .pillar-showcase-automotive .showcase-mark { max-width: 250px; }
 .pillar-showcase-los .showcase-mark { max-width: 190px; }
 
-/* People now follows the same status-then-CTA shape as Property/Automotive/
-   LOS (no separate capability list), so it takes no extra overrides beyond
-   its own mark width. */
+/* People now follows the same status-then-CTA shape as Automotive/LOS (no
+   separate capability list), so it takes no extra overrides beyond its
+   own mark width. */
 .pillar-showcase-people .showcase-mark { max-width: 260px; }
+
+/* PaddockDesk's approved logo has its own near-white background baked
+   in (not transparent) - unlike the other three pillar marks, it can't
+   sit directly on this card's navy background, so it gets its own
+   white chip inside the shared .showcase-mark zone, with an explicit
+   pixel width on the image itself (the generic ".showcase-mark img
+   {width:100%}" rule doesn't size correctly against a shrink-to-fit
+   chip with no explicit width of its own). */
+.pillar-showcase-paddockdesk .showcase-mark { max-width: 220px; }
+.pillar-showcase-paddockdesk .showcase-mark-chip {
+  display: inline-block;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  line-height: 0;
+}
+.pillar-showcase-paddockdesk .showcase-mark-chip img {
+  width: 170px;
+  height: auto;
+}
 
 /* ==================================================
    ENGINEERING SOLUTIONS - the fifth business area. It has no brand mark
@@ -608,84 +627,6 @@ h2 {
 }
 @media (max-width: 720px) {
   .paddockdesk-badge-chip img { width: 170px; }
-}
-
-/* Membership plans preview - three-tier pricing grid. The middle "Plus"
-   tier is visually promoted (pricing-card-highlight) to guide the eye,
-   same restrained gold-accent language as .los-feature-card's top
-   border rather than inventing a new accent treatment. */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 22px;
-  align-items: stretch;
-}
-.pricing-card {
-  position: relative;
-  min-width: 0;
-  background: var(--white);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  padding: 24px 20px;
-  text-align: center;
-}
-.pricing-card-highlight {
-  border-color: var(--gold);
-  box-shadow: 0 8px 24px rgba(7, 26, 47, 0.08);
-}
-.pricing-tag {
-  position: absolute;
-  top: -11px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--gold);
-  color: var(--navy);
-  font-weight: 800;
-  font-size: 0.66rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin: 0;
-  white-space: nowrap;
-}
-.pricing-name {
-  color: var(--navy);
-  font-weight: 800;
-  font-size: 1rem;
-  margin: 6px 0 10px;
-}
-.pricing-price {
-  color: var(--navy);
-  font-weight: 800;
-  font-size: 1.6rem;
-  margin: 0;
-}
-.pricing-cadence {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-.pricing-cadence-annual {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  margin: 2px 0 0;
-}
-.pricing-desc {
-  color: var(--text-muted);
-  font-size: 0.86rem;
-  line-height: 1.5;
-  margin: 14px 0 0;
-  text-align: left;
-}
-.pricing-disclaimer {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  line-height: 1.6;
-  max-width: 680px;
-  margin: 20px auto 0;
-  text-align: center;
 }
 
 /* "LOS Across Laurus" - premium navy cards, same base as .pillar-showcase */
@@ -1049,8 +990,7 @@ h2 {
   .principles,
   .los-feature-grid,
   .los-business-grid,
-  .home-feature-grid,
-  .pricing-grid { grid-template-columns: 1fr; }
+  .home-feature-grid { grid-template-columns: 1fr; }
 
   /* Connected Operating Model - the horizontal pill flow wraps awkwardly
      at phone widths (a trailing arrow left dangling at the row break), so
