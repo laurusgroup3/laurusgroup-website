@@ -873,6 +873,43 @@ h2 {
   margin: 0;
 }
 
+/* PaddockDesk product section - the approved logo PNG has its own
+   near-white background baked in (not transparent), so it always sits
+   on a dedicated white chip rather than directly on the page - same
+   idiom the LOS site uses for the same asset, just sized up here since
+   this is the section's own hero mark rather than a supporting badge. */
+.paddockdesk-badge-chip {
+  display: block;
+  width: fit-content;
+  margin: 28px auto 0;
+  padding: 14px 18px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(7, 26, 47, 0.08);
+  line-height: 0;
+}
+.paddockdesk-badge-chip img {
+  display: block;
+  width: 220px;
+  height: auto;
+}
+.paddockdesk-showcase {
+  max-width: 760px;
+  margin: 24px auto 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 18px 40px -24px rgba(7, 26, 47, 0.35);
+}
+.paddockdesk-showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 720px) {
+  .paddockdesk-badge-chip img { width: 170px; }
+}
+
 /* Membership plans preview - three-tier pricing grid. The middle "Plus"
    tier is visually promoted (pricing-card-highlight) to guide the eye,
    same restrained gold-accent language as .los-feature-card's top
