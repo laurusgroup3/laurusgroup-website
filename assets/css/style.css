@@ -1458,14 +1458,16 @@ h2 {
 
 
 /* ==================================================
-   TEMPORARY: Property / Laurus Trade Quotes hidden from the public site.
-   Business cards are Automotive, Technology, People and PaddockDesk:
-   desktop 4 equal across; tablet 2 x 2 (the base 2-column rule); phone
-   1 column (existing rule). Three LOS examples remain, 3 across.
+   TEMPORARY: Property / Laurus Trade Quotes and People / Laurus
+   Recruitment hidden from the public site. Their card CSS and images stay.
+   Business cards are the three core businesses - Podium (Automotive),
+   LOS (Technology) and PaddockDesk: desktop 3 equal across; tablet 2 + 1
+   full-width (rule below); phone 1 column (existing rule). Three LOS
+   examples remain, 3 across.
    Revert this block together with the index.html change to restore.
 ================================================== */
 @media (min-width: 1100px) {
-  .pillars { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 601px) and (max-width: 1099px) {
   .pillars > :last-child:nth-child(odd) { grid-column: 1 / -1; }
