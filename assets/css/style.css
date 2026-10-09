@@ -683,6 +683,38 @@ h2 {
   }
 }
 
+/* PaddockDesk (4th card): a Laurus Group technology product shown
+   alongside the three business areas. The approved navy logo has its own
+   near-white background baked in (not transparent), so it sits on a small
+   white chip - the same idiom as the #paddockdesk section further down.
+   Its real alpha dashboard screenshot sits behind a strong navy overlay,
+   matching the photo-under-navy treatment of the Automotive and People
+   cards, so the four read as one set. */
+.pillar-showcase-paddockdesk {
+  background:
+    linear-gradient(180deg,
+      rgba(7, 26, 47, 0.98) 0%,
+      rgba(7, 26, 47, 0.97) 45%,
+      rgba(7, 26, 47, 0.95) 72%,
+      rgba(7, 26, 47, 0.97) 100%),
+    url("../images/paddockdesk-showcase-dashboard.png") 30% 0% / cover no-repeat,
+    var(--navy);
+}
+.pillar-showcase-paddockdesk .showcase-mark {
+  max-width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pillar-showcase-paddockdesk .showcase-mark-chip {
+  display: block;
+  width: 100%;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  line-height: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
 /* Once the cards stack into one column, the LOS mark sits centred in
    its card. Wider layouts keep it left-aligned like the other marks in
    its row. */
@@ -1427,14 +1459,15 @@ h2 {
 
 /* ==================================================
    TEMPORARY: Property / Laurus Trade Quotes hidden from the public site.
-   Three business cards and three LOS examples remain, so rebalance:
-   desktop 3 across; tablet 2 + 1 full-width; phone 1 column (existing rule).
+   Business cards are Automotive, Technology, People and PaddockDesk:
+   desktop 4 equal across; tablet 2 x 2 (the base 2-column rule); phone
+   1 column (existing rule). Three LOS examples remain, 3 across.
    Revert this block together with the index.html change to restore.
 ================================================== */
-@media (min-width: 1000px) {
-  .pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width: 1100px) {
+  .pillars { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-@media (min-width: 601px) and (max-width: 999px) {
+@media (min-width: 601px) and (max-width: 1099px) {
   .pillars > :last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 @media (min-width: 801px) {
