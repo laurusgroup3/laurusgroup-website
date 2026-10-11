@@ -1,0 +1,2 @@
+# Cloudflare Wrangler local cache (account details) - never commit
+.wrangler/
