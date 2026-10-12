@@ -794,32 +794,96 @@ h2 {
    alongside the three business areas. The approved navy logo has its own
    near-white background baked in (not transparent), so it sits on a small
    white chip - the same idiom as the #paddockdesk section further down.
-   Its real alpha dashboard screenshot sits behind a strong navy overlay,
-   matching the photo-under-navy treatment of the Automotive and People
-   cards, so the four read as one set. */
+   Its real alpha dashboard screenshot sits behind a navy overlay, the
+   same photo-under-navy treatment as the Automotive and People cards.
+   The overlay is lighter behind the logo, so the dashboard's header and
+   statistics read through, and heavier behind the text. */
 .pillar-showcase-paddockdesk {
   background:
     linear-gradient(180deg,
-      rgba(7, 26, 47, 0.98) 0%,
-      rgba(7, 26, 47, 0.97) 45%,
-      rgba(7, 26, 47, 0.95) 72%,
-      rgba(7, 26, 47, 0.97) 100%),
+      rgba(7, 26, 47, 0.92) 0%,
+      rgba(7, 26, 47, 0.82) 24%,
+      rgba(7, 26, 47, 0.80) 40%,
+      rgba(7, 26, 47, 0.93) 54%,
+      rgba(7, 26, 47, 0.95) 100%),
     url("../images/paddockdesk-showcase-dashboard.png") 30% 0% / cover no-repeat,
     var(--navy);
 }
 .pillar-showcase-paddockdesk .showcase-mark {
-  max-width: 220px;
+  position: relative;
+  isolation: isolate;
+  min-height: 150px;
+  max-width: 190px;
   margin-left: auto;
   margin-right: auto;
 }
 .pillar-showcase-paddockdesk .showcase-mark-chip {
+  position: relative;
+  overflow: hidden;
   display: block;
   width: 100%;
   background: var(--white);
   border-radius: var(--radius);
-  padding: 12px 16px;
+  padding: 10px 14px;
   line-height: 0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+/* Phones: the card is taller and narrower, so the screenshot scales up
+   and the text starts higher; the darker band starts higher to match. */
+@media (max-width: 600px) {
+  .pillar-showcase-paddockdesk {
+    background:
+      linear-gradient(180deg,
+        rgba(7, 26, 47, 0.92) 0%,
+        rgba(7, 26, 47, 0.82) 18%,
+        rgba(7, 26, 47, 0.80) 30%,
+        rgba(7, 26, 47, 0.93) 41%,
+        rgba(7, 26, 47, 0.95) 100%),
+      url("../images/paddockdesk-showcase-dashboard.png") 30% 0% / cover no-repeat,
+      var(--navy);
+  }
+}
+/* PaddockDesk's own colours as light: a soft red-and-blue glow behind the
+   logo that breathes slowly, and a gentle sweep of light across the logo
+   panel every 9s. Only opacity and transform animate. */
+.pillar-showcase-paddockdesk .showcase-mark::before {
+  content: "";
+  position: absolute;
+  inset: 18% -22%;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 42% 60% at 30% 50%, rgba(227, 30, 36, 0.30), transparent 72%),
+    radial-gradient(ellipse 42% 60% at 70% 50%, rgba(59, 130, 246, 0.26), transparent 72%);
+  opacity: 0.7;
+  animation: pd-ambient 7s ease-in-out infinite alternate;
+}
+.pillar-showcase-paddockdesk .showcase-mark-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: pd-sweep 9s ease-in-out infinite 2s;
+}
+@keyframes pd-ambient {
+  from { opacity: 0.55; }
+  to   { opacity: 1; }
+}
+@keyframes pd-sweep {
+  0%        { transform: translateX(-100%); }
+  16%, 100% { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillar-showcase-paddockdesk .showcase-mark::before { animation: none; opacity: 0.8; }
+  .pillar-showcase-paddockdesk .showcase-mark-chip::after { animation: none; display: none; }
+}
+/* PaddockDesk's short headline above its description. */
+.showcase-tagline {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.35;
+  margin: 0 0 8px;
 }
 
 /* Once the cards stack into one column, the LOS mark sits centred in
