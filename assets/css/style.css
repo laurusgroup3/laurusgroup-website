@@ -577,7 +577,7 @@ h2 {
 }
 
 .pillar-showcase-property .showcase-mark { max-width: 280px; }
-.pillar-showcase-automotive .showcase-mark { max-width: 250px; }
+.pillar-showcase-automotive .showcase-mark { max-width: 250px; min-height: 150px; }
 .pillar-showcase-los .showcase-mark { max-width: 190px; }
 
 /* People now follows the same status-then-CTA shape as Property/Automotive/
@@ -590,7 +590,8 @@ h2 {
    that site's web derivatives) sits behind the card under a strong navy
    overlay, so it reads as texture and the gold Podium mark stays the
    focal point. The overlay is heaviest at the top (eyebrow + logo) and
-   never drops below 0.8 navy behind the text. Each crop is anchored on
+   lighter across the lower band where the diagnostic tablet sits, so the
+   tool reads clearly (text contrast is checked against it). Each crop is anchored on
    the diagnostic tablet, which lands in the lower right of the card. */
 .pillar-showcase-automotive {
   position: relative;
@@ -599,45 +600,135 @@ h2 {
   background:
     linear-gradient(180deg,
       rgba(7, 26, 47, 0.95) 0%,
-      rgba(7, 26, 47, 0.9) 42%,
-      rgba(7, 26, 47, 0.8) 72%,
-      rgba(7, 26, 47, 0.9) 100%),
+      rgba(7, 26, 47, 0.9) 40%,
+      rgba(7, 26, 47, 0.76) 66%,
+      rgba(7, 26, 47, 0.7) 82%,
+      rgba(7, 26, 47, 0.86) 100%),
     url("../images/podium-diagnostics-card.webp") 85% 100% / cover no-repeat,
     var(--navy);
 }
-/* Very faint gold light on the tablet's screen, breathing on the same
-   slow 8s rhythm as the hero's LOS tree glow. */
-.pillar-showcase-automotive::before {
+/* The diagnostic tablet's screen, lit as if powered on. .podium-screen
+   reproduces the background image's own box (same aspect ratio, "cover"
+   sizing, same 85% / bottom anchor), so the screen's corners - measured
+   from the image file - can be given in % of that box at any card size.
+   Inside it: a soft blue-green glow clipped to the screen's quadrilateral,
+   a slow scan line angled to the screen's tilt and moving along its own
+   "down" direction (clipped to the screen), and a faint reflection on a
+   thin ring just outside the screen's edge. */
+.podium-screen {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 85%;
+  transform: translateX(-85%);
+  aspect-ratio: 1280 / 720;
+  min-width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  --screen: 72.97% 59.86%, 85.16% 63.61%, 78.28% 80.97%, 66.25% 74.58%;
+  --bezel: 72.70% 58.87%, 86.11% 63.00%, 78.54% 82.09%, 65.31% 75.07%, 72.70% 58.87%,
+           72.97% 59.86%, 66.25% 74.58%, 78.28% 80.97%, 85.16% 63.61%, 72.97% 59.86%;
+  --glow-at: 75.7% 69.8%;
+}
+.podium-screen-glow,
+.podium-screen-bezel {
+  position: absolute;
+  inset: 0;
+}
+.podium-screen-glow {
+  clip-path: polygon(var(--screen));
+  background: radial-gradient(ellipse 14% 16% at var(--glow-at), rgba(90, 225, 215, 0.34), rgba(60, 170, 200, 0.14) 70%, rgba(60, 170, 200, 0.06));
+  animation: podium-screen-on 6s ease-in-out infinite alternate;
+}
+.podium-screen-scan {
+  position: absolute;
+  left: 56.80%;
+  top: 49.31%;
+  width: 37.81%;
+  height: 42.22%;
+  background: linear-gradient(193deg, transparent 44%, rgba(170, 255, 240, 0.55) 50%, transparent 56%);
+  opacity: 0;
+  animation: podium-scan 10s ease-in-out infinite 1.5s;
+}
+.podium-screen-bezel {
+  clip-path: polygon(var(--bezel));
+  background: linear-gradient(140deg, rgba(170, 245, 235, 0.32), rgba(170, 245, 235, 0.06) 55%, transparent);
+}
+@keyframes podium-screen-on {
+  from { opacity: 0.75; }
+  to   { opacity: 1; }
+}
+@keyframes podium-scan {
+  0%        { opacity: 0; transform: translate(18.7%, -40%); }
+  5%        { opacity: 1; }
+  26%       { opacity: 1; }
+  30%, 100% { opacity: 0; transform: translate(-18.7%, 40%); }
+}
+
+/* Podium logo: a soft warm halo that follows the lettering and laurel
+   (drop-shadow traces the artwork's own transparency; static, so it costs
+   nothing per frame), and a gentle gold light sweep masked by the same
+   artwork, so it only ever crosses the gold - no white panel. */
+.podium-mark-lit {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.podium-mark-lit img {
+  filter: drop-shadow(0 0 10px rgba(230, 190, 90, 0.38)) drop-shadow(0 0 2px rgba(255, 222, 150, 0.3));
+}
+.podium-mark-sweep {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask: url("../images/Podium Vehicle Solutions Logo-Issue 1.png.png") center / 100% 100% no-repeat;
+  mask: url("../images/Podium Vehicle Solutions Logo-Issue 1.png.png") center / 100% 100% no-repeat;
+}
+.podium-mark-sweep::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse 42% 30% at 74% 76%, rgba(201, 162, 39, 0.16), transparent 70%);
-  opacity: 0.55;
-  animation: podium-card-glow 8s ease-in-out infinite;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 244, 210, 0.9) 50%, transparent 62%);
+  transform: translateX(-100%);
+  animation: podium-logo-sweep 10s ease-in-out infinite 5s;
 }
-@keyframes podium-card-glow {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 1; }
+@keyframes podium-logo-sweep {
+  0%        { transform: translateX(-100%); }
+  24%, 100% { transform: translateX(100%); }
 }
 @media (max-width: 600px) {
   .pillar-showcase-automotive {
     background:
       linear-gradient(180deg,
         rgba(7, 26, 47, 0.95) 0%,
-        rgba(7, 26, 47, 0.92) 42%,
-        rgba(7, 26, 47, 0.86) 72%,
-        rgba(7, 26, 47, 0.9) 100%),
+        rgba(7, 26, 47, 0.9) 40%,
+        rgba(7, 26, 47, 0.8) 66%,
+        rgba(7, 26, 47, 0.74) 82%,
+        rgba(7, 26, 47, 0.86) 100%),
       url("../images/podium-diagnostics-card-mobile.webp") 70% 100% / cover no-repeat,
       var(--navy);
   }
-  .pillar-showcase-automotive::before {
-    background: radial-gradient(ellipse 55% 26% at 55% 72%, rgba(201, 162, 39, 0.16), transparent 70%);
+  /* Mobile crop: 720 x 710, anchored 70% / bottom; its own measured screen. */
+  .podium-screen {
+    left: 70%;
+    transform: translateX(-70%);
+    aspect-ratio: 720 / 710;
+    --screen: 40.97% 50.56%, 68.33% 54.93%, 53.19% 76.06%, 27.08% 68.31%;
+    --bezel: 40.33% 49.37%, 70.43% 54.18%, 53.78% 77.42%, 25.05% 68.89%, 40.33% 49.37%,
+             40.97% 50.56%, 27.08% 68.31%, 53.19% 76.06%, 68.33% 54.93%, 40.97% 50.56%;
+    --glow-at: 47.4% 62.5%;
+  }
+  .podium-screen-scan {
+    left: 6.46%;
+    top: 37.82%;
+    width: 82.5%;
+    height: 50.99%;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .pillar-showcase-automotive::before { animation: none; opacity: 0.75; }
+  .podium-screen-glow { animation: none; opacity: 0.9; }
+  .podium-screen-scan,
+  .podium-mark-sweep { display: none; }
 }
 
 /* Technology / LOS only: the same soft gold glow and slow ambient pulse
