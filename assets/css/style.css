@@ -141,7 +141,7 @@ nav#site-nav a:hover {
     linear-gradient(rgba(7,26,47,0.86), rgba(7,26,47,0.86)),
     radial-gradient(circle at top right, #26476a, var(--navy));
   color: var(--white);
-  padding: 72px 0 80px;
+  padding: 96px 0 104px;
 }
 /* Faint LOS tree: a large, low-opacity brand mark set into the right of
    the hero, fading out towards the text so it never competes with it.
@@ -168,7 +168,7 @@ nav#site-nav a:hover {
   position: absolute;
   inset: 0;
   background: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
-  opacity: 0.12;
+  opacity: 0.18;
   filter: drop-shadow(0 0 38px rgba(201, 162, 39, 0.35));
 }
 @media (max-width: 1100px) {
@@ -247,7 +247,8 @@ nav#site-nav a:hover {
   .hero-tree-glow { animation: none; opacity: 0; }
 }
 .hero .container { position: relative; }
-.hero-content { max-width: 640px; }
+.hero-content { max-width: 700px; }
+.hero h1 { text-wrap: balance; }
 .eyebrow {
   color: var(--gold);
   text-transform: uppercase;
@@ -264,11 +265,11 @@ h1 {
   text-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
 }
 .hero-text {
-  max-width: 620px;
-  font-size: 17px;
+  max-width: 560px;
+  font-size: 18px;
   line-height: 1.7;
   color: #d8e2f0;
-  margin-bottom: 30px;
+  margin-bottom: 36px;
 }
 .button {
   display: inline-block;
@@ -1019,7 +1020,7 @@ h2 {
   #standard blockquote { margin-top: 30px; padding-left: 22px; }
   #standard blockquote + p { padding-left: 22px; }
 
-  .hero { padding: 44px 0 52px; }
+  .hero { padding: 64px 0 72px; }
   /* Phones: the tree sits lower-right, partly off-canvas and fainter, so
      the left-aligned text stays fully readable over it. */
   .hero-tree {
@@ -1033,7 +1034,7 @@ h2 {
     mask-image: linear-gradient(to bottom right, transparent 10%, #000 55%);
     mask-composite: add;
   }
-  .hero-tree::before { opacity: 0.10; }
+  .hero-tree::before { opacity: 0.15; }
   .section { padding: 48px 0; }
 
   /* .section's shorthand above resets top/bottom on any element that also
@@ -1057,7 +1058,8 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  .hero-text { font-size: 16px; }
+  .hero h1 { font-size: 2.45rem; margin: 12px 0 18px; }
+  .hero-text { font-size: 16px; line-height: 1.65; margin-bottom: 30px; }
   h2 { font-size: 1.55rem; }
 }
 
