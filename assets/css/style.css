@@ -157,9 +157,9 @@ nav#site-nav a:hover {
   transform: translateY(-50%);
   /* Fades in from the left (towards the text) and out at the base, so
      the mark has no hard edges. */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%), linear-gradient(to bottom, #000 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%), linear-gradient(to bottom, #000 86%, transparent 100%);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to right, transparent 0%, #000 38%), linear-gradient(to bottom, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 38%), linear-gradient(to bottom, #000 86%, transparent 100%);
   mask-composite: intersect;
   pointer-events: none;
 }
@@ -186,13 +186,20 @@ nav#site-nav a:hover {
   inherits: false;
   initial-value: 96%;
 }
+/* One masked group holds every glow layer: a separately masked layer
+   costs a full mask composite on every frame, so the layers inside are
+   plain and only the group carries the mark's mask. */
 .hero-tree-glow {
   position: absolute;
   inset: 0;
-  opacity: 0;
   mix-blend-mode: screen;
   -webkit-mask: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
   mask: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
+}
+.glow-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
   animation: 8s ease-in-out infinite;
   will-change: opacity;
 }
@@ -243,8 +250,76 @@ nav#site-nav a:hover {
   74%       { opacity: 0.16; }
   86%, 100% { opacity: 0; }
 }
+/* LOS lettering and circuit roots. Same technique as above: every layer
+   is masked by the mark's own transparency, so light lands only on the
+   artwork's real pixels. Positions are measured from the PNG: the letters
+   span x 29-72%, y 64-81%; the circuit roots run from 82% to the base.
+   - glow-letters-base: a steady, slightly brighter warmth on the letters.
+   - glow-letters-shimmer: a soft glint crossing the letters once every
+     11s, kept inside the letter band.
+   - glow-root-*: small points of light travelling slowly outwards from
+     the trunk through the circuit traces, one direction at a time.
+   Like the layers above they sit in the one masked group, and the moving
+   light uses only transform and opacity. */
+.glow-flow { overflow: hidden; }
+.glow-letters-base,
+.glow-letters-shimmer,
+.glow-root {
+  position: absolute;
+  inset: 0;
+}
+.glow-letters-base {
+  background: radial-gradient(ellipse 26% 11% at 51% 72%, rgba(255, 214, 120, 0.9), transparent 80%);
+  opacity: 0.14;
+}
+.glow-letters-shimmer::before,
+.glow-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.glow-letters-shimmer::before {
+  background: radial-gradient(ellipse 5% 10% at 26% 72.5%, rgba(255, 236, 176, 0.95), transparent 80%);
+  animation: hero-letters-shimmer 11s ease-in-out infinite 3s;
+}
+.glow-root::before {
+  background: radial-gradient(ellipse 11% 7% at 50% 83%, rgba(255, 220, 130, 1), transparent 75%);
+  animation: 9s ease-in-out infinite;
+}
+.glow-root-left::before  { animation-name: hero-root-left; }
+.glow-root-right::before { animation-name: hero-root-right; animation-delay: 3s; }
+.glow-root-down::before  { animation-name: hero-root-down; animation-delay: 6s; }
+@keyframes hero-letters-shimmer {
+  0%        { opacity: 0;    transform: translateX(0); }
+  4%        { opacity: 0.55; }
+  18%       { opacity: 0.55; transform: translateX(48%); }
+  22%, 100% { opacity: 0;    transform: translateX(50%); }
+}
+@keyframes hero-root-left {
+  0%        { opacity: 0;   transform: translate(-2%, 0); }
+  6%        { opacity: 0.7; }
+  30%       { opacity: 0.7; transform: translate(-34%, 8%); }
+  36%, 100% { opacity: 0;   transform: translate(-38%, 9%); }
+}
+@keyframes hero-root-right {
+  0%        { opacity: 0;   transform: translate(2%, 0); }
+  6%        { opacity: 0.7; }
+  30%       { opacity: 0.7; transform: translate(34%, 8%); }
+  36%, 100% { opacity: 0;   transform: translate(38%, 9%); }
+}
+@keyframes hero-root-down {
+  0%        { opacity: 0;   transform: translate(0, 0); }
+  6%        { opacity: 0.7; }
+  30%       { opacity: 0.7; transform: translate(0, 16%); }
+  36%, 100% { opacity: 0;   transform: translate(0, 17%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-tree-glow { animation: none; opacity: 0; }
+  .glow-layer,
+  .glow-letters-shimmer::before,
+  .glow-root::before { animation: none; opacity: 0; }
+  /* The steady letter warmth (.glow-letters-base) is not motion, so it stays. */
 }
 .hero .container { position: relative; }
 .hero-content { max-width: 700px; }
