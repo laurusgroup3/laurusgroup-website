@@ -153,7 +153,7 @@ nav#site-nav a:hover {
   top: 50%;
   right: max(-40px, calc((100vw - 1160px) / 2 - 60px));
   width: min(560px, 46vw);
-  aspect-ratio: 500 / 456;
+  aspect-ratio: 1 / 1;
   transform: translateY(-50%);
   /* Fades in from the left (towards the text) and out at the base, so
      the mark has no hard edges. */
@@ -167,7 +167,7 @@ nav#site-nav a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
+  background: url("../images/los-mark-560.webp") center / contain no-repeat;
   opacity: 0.18;
   filter: drop-shadow(0 0 38px rgba(201, 162, 39, 0.35));
 }
@@ -184,7 +184,7 @@ nav#site-nav a:hover {
 @property --rise {
   syntax: "<percentage>";
   inherits: false;
-  initial-value: 96%;
+  initial-value: 85%;
 }
 /* One masked group holds every glow layer: a separately masked layer
    costs a full mask composite on every frame, so the layers inside are
@@ -193,8 +193,8 @@ nav#site-nav a:hover {
   position: absolute;
   inset: 0;
   mix-blend-mode: screen;
-  -webkit-mask: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
-  mask: url("../images/los-logo-mark-transparent.png") center / contain no-repeat;
+  -webkit-mask: url("../images/los-mark-560.webp") center / contain no-repeat;
+  mask: url("../images/los-mark-560.webp") center / contain no-repeat;
 }
 .glow-layer {
   position: absolute;
@@ -204,31 +204,31 @@ nav#site-nav a:hover {
   will-change: opacity;
 }
 .glow-trunk {
-  background: radial-gradient(ellipse 15% 20% at 50% var(--rise), rgba(255, 214, 120, 0.95), transparent 72%);
+  background: radial-gradient(ellipse 14.6% 17.7% at 50.1% var(--rise), rgba(255, 214, 120, 0.95), transparent 72%);
   animation-name: hero-tree-trunk;
 }
 .glow-left {
-  background: radial-gradient(ellipse 24% 24% at 30% 37%, rgba(255, 214, 120, 0.9), transparent 72%);
+  background: radial-gradient(ellipse 23.3% 21.3% at 30.7% 32.7%, rgba(255, 214, 120, 0.9), transparent 72%);
   animation-name: hero-tree-left;
 }
 .glow-right {
-  background: radial-gradient(ellipse 24% 24% at 70% 35%, rgba(255, 214, 120, 0.9), transparent 72%);
+  background: radial-gradient(ellipse 23.3% 21.3% at 69.5% 31%, rgba(255, 214, 120, 0.9), transparent 72%);
   animation-name: hero-tree-right;
 }
 .glow-crown {
-  background: radial-gradient(ellipse 24% 18% at 50% 15%, rgba(255, 214, 120, 0.9), transparent 72%);
+  background: radial-gradient(ellipse 23.3% 15.9% at 50.1% 13.2%, rgba(255, 214, 120, 0.9), transparent 72%);
   animation-name: hero-tree-crown;
 }
 .glow-letters {
-  background: radial-gradient(ellipse 30% 13% at 50% 71%, rgba(255, 214, 120, 0.85), transparent 75%);
+  background: radial-gradient(ellipse 29.1% 11.5% at 50.1% 62.8%, rgba(255, 214, 120, 0.85), transparent 75%);
   animation-name: hero-tree-letters;
 }
 @keyframes hero-tree-trunk {
-  0%   { opacity: 0;    --rise: 96%; }
+  0%   { opacity: 0;    --rise: 85%; }
   8%   { opacity: 0.30; }
-  30%  { opacity: 0.30; --rise: 44%; }
-  42%  { opacity: 0;    --rise: 40%; }
-  100% { opacity: 0;    --rise: 40%; }
+  30%  { opacity: 0.30; --rise: 38.9%; }
+  42%  { opacity: 0;    --rise: 35.4%; }
+  100% { opacity: 0;    --rise: 35.4%; }
 }
 @keyframes hero-tree-left {
   0%, 24%   { opacity: 0; }
@@ -252,8 +252,9 @@ nav#site-nav a:hover {
 }
 /* LOS lettering and circuit roots. Same technique as above: every layer
    is masked by the mark's own transparency, so light lands only on the
-   artwork's real pixels. Positions are measured from the PNG: the letters
-   span x 29-72%, y 64-81%; the circuit roots run from 82% to the base.
+   artwork's real pixels. Positions are measured from the mark
+   (los-mark-560.webp): the letters span x 30-72%, y 57-72%; the circuit
+   roots run from 73% down past the chip (89%).
    - glow-letters-base: a steady, slightly brighter warmth on the letters.
    - glow-letters-shimmer: a soft glint crossing the letters once every
      11s, kept inside the letter band.
@@ -273,7 +274,7 @@ nav#site-nav a:hover {
 .glow-letters-shimmer { opacity: var(--shimmer-peak, 0.55); }
 .glow-root { opacity: var(--root-peak, 0.7); }
 .glow-letters-base {
-  background: radial-gradient(ellipse 26% 11% at 51% 72%, var(--glow-warm, rgba(255, 214, 120, 0.9)), transparent 80%);
+  background: radial-gradient(ellipse 25.2% 9.7% at 51.1% 63.7%, var(--glow-warm, rgba(255, 214, 120, 0.9)), transparent 80%);
   opacity: var(--letters-base, 0.14);
 }
 .glow-letters-shimmer::before,
@@ -284,11 +285,11 @@ nav#site-nav a:hover {
   opacity: 0;
 }
 .glow-letters-shimmer::before {
-  background: radial-gradient(ellipse 5% 10% at 26% 72.5%, var(--glow-glint, rgba(255, 236, 176, 0.95)), transparent 80%);
+  background: radial-gradient(ellipse 4.9% 8.9% at 26.8% 64.2%, var(--glow-glint, rgba(255, 236, 176, 0.95)), transparent 80%);
   animation: hero-letters-shimmer 11s ease-in-out infinite 3s;
 }
 .glow-root::before {
-  background: radial-gradient(ellipse var(--pulse-size, 11% 7%) at 50% 83%, var(--glow-pulse, rgba(255, 220, 130, 1)), transparent 75%);
+  background: radial-gradient(ellipse var(--pulse-size, 10.7% 6.2%) at 50.1% 73.5%, var(--glow-pulse, rgba(255, 220, 130, 1)), transparent 75%);
   animation: 9s ease-in-out infinite;
 }
 .glow-root-left::before  { animation-name: hero-root-left; }
@@ -297,26 +298,26 @@ nav#site-nav a:hover {
 @keyframes hero-letters-shimmer {
   0%        { opacity: 0;    transform: translateX(0); }
   4%        { opacity: 1; }
-  18%       { opacity: 1; transform: translateX(48%); }
-  22%, 100% { opacity: 0;    transform: translateX(50%); }
+  18%       { opacity: 1; transform: translateX(46.6%); }
+  22%, 100% { opacity: 0;    transform: translateX(48.6%); }
 }
 @keyframes hero-root-left {
-  0%        { opacity: 0;   transform: translate(-2%, 0); }
+  0%        { opacity: 0;   transform: translate(-1.9%, 0); }
   6%        { opacity: 1; }
-  30%       { opacity: 1; transform: translate(-34%, 8%); }
-  36%, 100% { opacity: 0;   transform: translate(-38%, 9%); }
+  30%       { opacity: 1; transform: translate(-33%, 7.1%); }
+  36%, 100% { opacity: 0;   transform: translate(-36.9%, 8%); }
 }
 @keyframes hero-root-right {
-  0%        { opacity: 0;   transform: translate(2%, 0); }
+  0%        { opacity: 0;   transform: translate(1.9%, 0); }
   6%        { opacity: 1; }
-  30%       { opacity: 1; transform: translate(34%, 8%); }
-  36%, 100% { opacity: 0;   transform: translate(38%, 9%); }
+  30%       { opacity: 1; transform: translate(33%, 7.1%); }
+  36%, 100% { opacity: 0;   transform: translate(36.9%, 8%); }
 }
 @keyframes hero-root-down {
   0%        { opacity: 0;   transform: translate(0, 0); }
   6%        { opacity: 1; }
-  30%       { opacity: 1; transform: translate(0, 16%); }
-  36%, 100% { opacity: 0;   transform: translate(0, 17%); }
+  30%       { opacity: 1; transform: translate(0, 14.2%); }
+  36%, 100% { opacity: 0;   transform: translate(0, 15.1%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -578,7 +579,7 @@ h2 {
 
 .pillar-showcase-property .showcase-mark { max-width: 280px; }
 .pillar-showcase-automotive .showcase-mark { max-width: 250px; min-height: 150px; }
-.pillar-showcase-los .showcase-mark { max-width: 190px; }
+.pillar-showcase-los .showcase-mark { max-width: 180px; }
 
 /* People now follows the same status-then-CTA shape as Property/Automotive/
    LOS (no separate capability list), so it takes no extra overrides beyond
@@ -770,7 +771,7 @@ h2 {
   --shimmer-peak: 0.9;
   --glow-pulse: rgba(255, 248, 222, 1);
   --root-peak: 1;
-  --pulse-size: 16% 10%;
+  --pulse-size: 15.5% 8.9%;
 }
 /* Switched off by main.js while the card is off screen: the masked,
    blended light group costs compositing time even when paused. It is an
