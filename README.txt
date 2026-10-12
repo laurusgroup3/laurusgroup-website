@@ -9,4 +9,4 @@ Folder structure:
 - assets/images/
 
 Purpose:
-Issue 1 homepage foundation for Laurus Group, linking the three core businesses (Podium Vehicle Solutions, LOS and PaddockDesk), engineering support, and setting the Laurus Standard.
+Homepage for Laurus Group, introducing its four main offerings (the Laurus Operating System (LOS), Podium Vehicle Solutions, PaddockDesk and PitstopDash) and the Laurus Standard.
