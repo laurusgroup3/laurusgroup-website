@@ -726,6 +726,101 @@ h2 {
 }
 
 /* ==================================================
+   PRODUCT PREVIEWS - PaddockDesk and PitstopDash, directly under the
+   four offering cards. The genuine alpha screenshots lead; copy stays
+   short. Same cream ground as #businesses, so the section joins it with
+   a reduced top gap instead of a second full-height break. Desktop: image
+   beside copy, alternating sides; phones: image first, then copy.
+================================================== */
+.section.previews { padding-top: 8px; }
+.preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  margin-top: 36px;
+}
+.preview + .preview {
+  margin-top: 56px;
+  padding-top: 56px;
+  border-top: 1px solid var(--hairline);
+}
+.preview-pitstopdash { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.preview-pitstopdash .preview-media { order: 2; width: 240px; justify-self: center; }
+.preview-media { margin: 0; }
+.preview-media figcaption {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.preview-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 24px 48px -24px rgba(7, 26, 47, 0.45);
+}
+.preview-copy h3 {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin: 0 0 12px;
+}
+.preview-copy p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.preview-status {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+.preview-status li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--text);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.preview-status li + li { margin-top: 6px; }
+.preview-status li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.preview-status span { color: var(--navy); font-weight: 700; }
+.preview-copy .button { margin-top: 22px; }
+
+/* PitstopDash phone - the original frame: a navy bezel around the
+   approved alpha screenshot. */
+.pitstopdash-phone picture {
+  display: block;
+  padding: 7px;
+  border-radius: 28px;
+  background: var(--navy);
+  box-shadow: 0 24px 48px -24px rgba(7, 26, 47, 0.55);
+}
+.pitstopdash-phone img { display: block; width: 100%; height: auto; border-radius: 21px; }
+
+@media (max-width: 900px) {
+  .preview,
+  .preview-pitstopdash {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .preview-pitstopdash .preview-media { order: 0; }
+  .preview-pitstopdash .preview-media { width: 210px; }
+  .preview + .preview { margin-top: 40px; padding-top: 40px; }
+}
+
+/* ==================================================
    THE LAURUS STANDARD - the flagship brand section: heading, gold quote
    and one short line, with generous space around them. The heading takes
    the same short gold rule as Laurus Approved.
