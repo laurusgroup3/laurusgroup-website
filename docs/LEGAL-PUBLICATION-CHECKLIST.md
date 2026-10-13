@@ -18,17 +18,15 @@ versions are approved.
 - Information is disclosed to advisers where necessary and to authorities where the law requires.
 - Fonts are self-hosted.
 
-## 1. ICO register (you)
+## 1. ICO register: COMPLETED
 
-Open https://ico.org.uk/ESDWebPages/Entry/ZC246352 and check:
+Verified by Laurus Group Limited on the ICO public register
+(https://ico.org.uk/ESDWebPages/Entry/ZC246352) and approved for all four sites.
 
-- [ ] Registration number is **ZC246352**
-- [ ] Organisation name is **Laurus Group Limited** (exactly)
-- [ ] Address matches **316 Warwick Road, Banbury, OX16 1AZ**
-- [ ] Registration is current. Note the **expiry date**: ____________
-- [ ] Save a screenshot for the records
-
-If any of these don't match, don't publish the ICO number. Tell me and I'll remove it.
+- [x] Registration number: **ZC246352**
+- [x] Organisation: **Laurus Group Limited**
+- [x] Address: **316 Warwick Road, Banbury, Oxfordshire, OX16 1AZ**, matching the websites
+- [x] Registered **2 October 2026**, expires **1 October 2027**. Renew before expiry and keep the number on the sites in step.
 
 ## 2. Cloudflare (you)
 
