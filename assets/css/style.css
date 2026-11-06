@@ -882,22 +882,24 @@ h2 {
   }
 }
 
-/* PaddockDesk (4th card): a Laurus Group technology product shown
-   alongside the three business areas. The approved navy logo has its own
-   near-white background baked in (not transparent), so it sits on a small
-   white chip - the same idiom as the #paddockdesk section further down.
-   Its real alpha dashboard screenshot sits behind a navy overlay, the
-   same photo-under-navy treatment as the Automotive and People cards.
-   The overlay is lighter behind the logo, so the dashboard's header and
-   statistics read through, and heavier behind the text. */
+/* PaddockDesk card: a Laurus Group technology product shown alongside
+   the business areas. Its approved logo sits in a white rounded frame
+   (badge exported from the approved navy logo artwork, unchanged), over
+   its real alpha dashboard screenshot under a navy overlay - the same
+   presentation as the PaddockConnect card. */
 .pillar-showcase-paddockdesk {
+  /* Same logo position as the PaddockConnect card, so the two read as a
+     pair: the dashboard shows through above the logo badge, then the navy
+     deepens behind the text (px stops tied to the logo position). */
+  --pd-mark-top: 168px;
   background:
     linear-gradient(180deg,
-      rgba(7, 26, 47, 0.92) 0%,
-      rgba(7, 26, 47, 0.82) 24%,
-      rgba(7, 26, 47, 0.80) 40%,
-      rgba(7, 26, 47, 0.93) 54%,
-      rgba(7, 26, 47, 0.95) 100%),
+      rgba(7, 26, 47, 0.92) 0px,
+      rgba(7, 26, 47, 0.80) 80px,
+      rgba(7, 26, 47, 0.76) calc(var(--pd-mark-top) + 40px),
+      rgba(7, 26, 47, 0.93) calc(var(--pd-mark-top) + 110px),
+      rgba(7, 26, 47, 0.975) calc(var(--pd-mark-top) + 170px),
+      rgba(7, 26, 47, 0.98) 100%),
     url("../images/paddockdesk-showcase-dashboard.png") 30% 0% / cover no-repeat,
     var(--navy);
 }
@@ -921,21 +923,6 @@ h2 {
   padding: 10px 14px;
   line-height: 0;
   box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.18);
-}
-/* Phones: the card is taller and narrower, so the screenshot scales up
-   and the text starts higher; the darker band starts higher to match. */
-@media (max-width: 600px) {
-  .pillar-showcase-paddockdesk {
-    background:
-      linear-gradient(180deg,
-        rgba(7, 26, 47, 0.92) 0%,
-        rgba(7, 26, 47, 0.82) 18%,
-        rgba(7, 26, 47, 0.80) 30%,
-        rgba(7, 26, 47, 0.93) 41%,
-        rgba(7, 26, 47, 0.95) 100%),
-      url("../images/paddockdesk-showcase-dashboard.png") 30% 0% / cover no-repeat,
-      var(--navy);
-  }
 }
 /* PaddockDesk's and PaddockConnect's own colours as light: a soft
    red-and-blue glow behind the logo that breathes slowly, and a gentle
@@ -1389,10 +1376,34 @@ h2 {
 /* The badge is much wider than PaddockDesk's chip, so its glow spreads
    less sideways - it stays inside the card padding on phones. */
 .pillar-showcase-paddockconnect .showcase-mark::before { inset: 4% -7%; }
+
+/* PaddockDesk: the same badge presentation as PaddockConnect - its
+   approved logo in a matching white rounded frame, at the same width and
+   position, with the same tagline size. */
+.pillar-showcase-paddockdesk .showcase-mark {
+  min-height: 0;
+  max-width: 340px;
+  margin-top: var(--pd-mark-top);
+  margin-bottom: 26px;
+}
+.pillar-showcase-paddockdesk .showcase-mark::before { inset: 4% -7%; }
+.pillar-showcase-paddockdesk .showcase-mark-chip {
+  padding: 0;
+  background: none;
+  border-radius: 3.43% / 12.78%;
+}
+.pillar-showcase-paddockdesk .showcase-mark-chip picture { display: block; }
+.pillar-showcase-paddockdesk .showcase-tagline { font-size: 1.22rem; }
+@media (min-width: 601px) and (max-width: 900px) {
+  .pillar-showcase-paddockdesk { --pd-mark-top: 142px; }
+}
+@media (max-width: 600px) {
+  .pillar-showcase-paddockdesk { --pd-mark-top: 136px; }
+}
 .pillar-showcase-paddockconnect .showcase-tagline { font-size: 1.22rem; }
 
-/* Its CTA is the approved outlined gold button: still the card's one
-   link, stretched over the card exactly like PaddockDesk's (below). */
+/* PaddockDesk and PaddockConnect CTAs: the approved outlined gold button,
+   still each card's one link, stretched over the card (below). */
 .showcase-cta-button {
   margin-top: 16px;
   padding: 12px 18px;
@@ -1404,6 +1415,7 @@ h2 {
 }
 .showcase-footer > .showcase-cta-button { margin-top: 16px; }
 .showcase-cta-button:hover,
+.pillar-showcase-paddockdesk:hover .showcase-cta-button,
 .pillar-showcase-paddockconnect:hover .showcase-cta-button {
   color: var(--gold);
   border-color: var(--gold);
