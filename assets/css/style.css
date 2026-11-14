@@ -389,6 +389,10 @@ h2 {
   margin: 14px 0 0;
 }
 .dark .section-lead { color: #b9c6d4; }
+/* Businesses intro: a short lead line, then a supporting paragraph at the
+   same measure, so the two read as one balanced block above the cards. */
+#businesses .section-lead { max-width: 680px; text-wrap: pretty; }
+#businesses .section-lead-detail { margin-top: 12px; font-size: 0.97rem; line-height: 1.65; }
 .dark p { color: #c7d3e0; }
 .narrow p { max-width: 640px; line-height: 1.75; }
 
