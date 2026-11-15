@@ -505,9 +505,9 @@ h2 {
 /* A shared logo zone, not a shared logo SIZE: each pillar's mark keeps
    its own already-tuned max-width (below) and its own true aspect ratio
    - nothing is stretched or cropped. Centering every mark inside the
-   same min-height band is what makes the four headers line up, since
+   same min-height band is what makes the card headers line up, since
    today's marks render at very different heights (roughly 85px-173px
-   across the four logos at their current widths). */
+   across the logos at their current widths). */
 .showcase-mark {
   display: flex;
   align-items: center;
@@ -989,7 +989,7 @@ h2 {
 
 /* ==================================================
    PRODUCT PREVIEWS - PaddockDesk and PaddockConnect, directly under the
-   four offering cards. The genuine alpha screenshots lead; copy stays
+   five offering cards. The genuine alpha screenshots lead; copy stays
    short. Same cream ground as #businesses, so the section joins it with
    a reduced top gap instead of a second full-height break. Desktop: image
    beside copy, alternating sides; phones: image first, then copy.
@@ -1328,9 +1328,9 @@ h2 {
 /* ==================================================
    TEMPORARY: Property / Laurus Trade Quotes and People / Laurus
    Recruitment hidden from the public site. Their card CSS and images stay.
-   Business cards are the four main offerings - LOS, PaddockDesk,
-   PaddockConnect and Podium - in the base 2 x 2 grid; phone 1 column
-   (existing rule). An odd last card spans the row (rule below).
+   Business cards are the five offerings - LOS, PaddockDesk, Ask Paddy,
+   PaddockConnect and Podium - in the base two-column grid; phone 1 column
+   (existing rule). The odd last card is centred at card width (rules below).
 ================================================== */
 @media (min-width: 601px) {
   .pillars > :last-child:nth-child(odd) { grid-column: 1 / -1; }
