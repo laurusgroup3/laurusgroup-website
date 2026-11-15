@@ -9,7 +9,7 @@ Folder structure:
 - assets/images/
 
 Purpose:
-Homepage for Laurus Group, introducing its four main offerings (the Laurus Operating System (LOS), Podium Vehicle Solutions, PaddockDesk and PaddockConnect) and the Laurus Standard.
+Homepage for Laurus Group, introducing its five connected offerings (the Laurus Operating System (LOS), PaddockDesk, Ask Paddy (the AI assistant being developed for PaddockDesk Pro), PaddockConnect and Podium Vehicle Solutions) and the Laurus Standard.
 
 Pages:
 - index.html - homepage
